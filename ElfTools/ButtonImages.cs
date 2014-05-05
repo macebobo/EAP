@@ -2,20 +2,18 @@
 
 namespace ElfTools {
     public class ButtonImages {
-        public Bitmap SelectedImage = null;
-        public Bitmap UnselectedImage = null;
-
-        public ButtonImages() {}
+        private readonly Bitmap _selectedImage;
+        private readonly Bitmap _unselectedImage;
 
 
         public ButtonImages(Bitmap unselected, Bitmap selected) {
-            UnselectedImage = unselected;
-            SelectedImage = selected;
+            _unselectedImage = unselected;
+            _selectedImage = selected;
         }
 
 
         public Bitmap GetImage(bool selected) {
-            return selected ? SelectedImage : UnselectedImage;
+            return selected ? _selectedImage : _unselectedImage;
         }
     }
 }
