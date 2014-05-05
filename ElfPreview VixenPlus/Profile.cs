@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 
 using ElfCore.Channels;
-using ElfCore.Core;
 using ElfCore.Util;
 
+using ElfProfiles.Annotations;
 using ElfProfiles.Vixen;
 
 using Vixen = VixenPlus;
@@ -32,7 +33,7 @@ namespace ElfPreview {
         #region [ Properties ]
 
         public byte[] Alphas {
-            get { return _alphas; }
+            [UsedImplicitly] get { return _alphas; }
             set { _alphas = value; }
         }
 
@@ -56,57 +57,50 @@ namespace ElfPreview {
         #region [ Methods ]
 
         private void Load(XmlNode setupNode) {
-            Color RendorColor;
-            XmlNode CellsNode = null;
-            XmlNode RenderColorNode = null;
+            var toChannel = _xmlHelper.GetAttributeValue(setupNode, GeneralPlugIn.Attribute_To, 0);
 
-            int ToChannel = _xmlHelper.GetAttributeValue(setupNode, GeneralPlugIn.Attribute_To, 0);
+            using (var previewScaling = BaseVixen.LoadScaling(setupNode.SelectSingleNode("Scaling"))) {
+                _canvasSize = previewScaling.CanvasSize;
 
-            using (Scaling PreviewScaling = BaseVixen.LoadScaling(setupNode.SelectSingleNode("Scaling"))) {
-                _canvasSize = PreviewScaling.CanvasSize;
+                using (var previewBackground = BaseVixen.LoadBackground(setupNode.SelectSingleNode("Background"))) {
+                    if (previewBackground.HasData) {
+                        previewBackground.BuildCompositeImage(previewScaling);
 
-                using (Background PreviewBackground = BaseVixen.LoadBackground(setupNode.SelectSingleNode("Background"))) {
-                    if (PreviewBackground.HasData) {
-                        PreviewBackground.BuildCompositeImage(PreviewScaling);
-
-                        var dest = new Bitmap(PreviewBackground.CompositeImage.Width, PreviewBackground.CompositeImage.Height,
+                        var dest = new Bitmap(previewBackground.CompositeImage.Width, previewBackground.CompositeImage.Height,
                             PixelFormat.Format32bppPArgb);
-                        using (Graphics gr = Graphics.FromImage(dest)) {
-                            gr.DrawImage(PreviewBackground.CompositeImage, new Rectangle(Point.Empty, dest.Size));
+                        using (var gr = Graphics.FromImage(dest)) {
+                            gr.DrawImage(previewBackground.CompositeImage, new Rectangle(Point.Empty, dest.Size));
                         }
                         if (_canvasPane.Image != null) {
                             _canvasPane.Dispose();
                         }
                         _canvasPane.Image = dest;
-                        PreviewBackground.Dispose();
+                        previewBackground.Dispose();
                     }
                 }
 
-                for (int i = _startChannel; i < ToChannel; i++) {
-                    RendorColor = Color.HotPink;
-                    foreach (Vixen.Channel VChannel in _channels) {
-                        if (VChannel.OutputChannel == i) {
-                            RendorColor = VChannel.Color;
-                        }
+                for (var i = _startChannel; i < toChannel; i++) {
+                    var rendorColor = Color.HotPink;
+                    var currentChannel = i;
+                    foreach (var vChannel in _channels.Where(vChannel => vChannel.OutputChannel == currentChannel)) {
+                        rendorColor = vChannel.Color;
                     }
-                    RenderColorNode = setupNode.SelectSingleNode(string.Format("Channels/Channel[@output='{0}']/RenderColor", i));
-                    if ((RenderColorNode != null) && (RenderColorNode.InnerText.Length != 0)) {
-                        RendorColor = Color.FromArgb(Convert.ToInt32(RenderColorNode.InnerText));
+                    var renderColorNode = setupNode.SelectSingleNode(string.Format("Channels/Channel[@output='{0}']/RenderColor", i));
+                    if ((renderColorNode != null) && (renderColorNode.InnerText.Length != 0)) {
+                        rendorColor = Color.FromArgb(Convert.ToInt32(renderColorNode.InnerText));
                     }
-                    _colors.Add(RendorColor);
-                    RenderColorNode = null;
+                    _colors.Add(rendorColor);
 
-                    CellsNode = setupNode.SelectSingleNode(string.Format("Channels/Channel[@output='{0}']/Cells", i));
-                    if (CellsNode == null) {
+                    var cellsNode = setupNode.SelectSingleNode(string.Format("Channels/Channel[@output='{0}']/Cells", i));
+                    if (cellsNode == null) {
                         _paths.Add(new GraphicsPath());
                         continue;
                     }
-                    using (var Channel = new Channel()) {
-                        Channel.SuppressEvents = true;
-                        Channel.DeserializeLattice(CellsNode.InnerText, true);
-                        _paths.Add((GraphicsPath) Channel.GetGraphicsPath(PreviewScaling).Clone());
+                    using (var channel = new Channel()) {
+                        channel.SuppressEvents = true;
+                        channel.DeserializeLattice(cellsNode.InnerText, true);
+                        _paths.Add((GraphicsPath) channel.GetGraphicsPath(previewScaling).Clone());
                     }
-                    CellsNode = null;
                 }
             }
         }
@@ -117,9 +111,9 @@ namespace ElfPreview {
             if (_alphas == null) {
                 return;
             }
-            for (int i = 0; i < _alphas.Length; i++) {
-                using (var Brush = new SolidBrush(Color.FromArgb(_alphas[i], _colors[i]))) {
-                    e.Graphics.FillPath(Brush, _paths[i]);
+            for (var i = 0; i < _alphas.Length; i++) {
+                using (var brush = new SolidBrush(Color.FromArgb(_alphas[i], _colors[i]))) {
+                    e.Graphics.FillPath(brush, _paths[i]);
                 }
             }
         }

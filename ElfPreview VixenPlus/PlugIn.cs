@@ -10,8 +10,7 @@ using ElfCore.Forms;
 using ElfCore.Profiles;
 using ElfCore.Util;
 
-using ElfPreview.Annotations;
-
+using ElfPreview.Properties;
 using Vixen = VixenPlus;
 
 namespace ElfPreview {

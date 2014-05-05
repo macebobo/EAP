@@ -1,5 +1,4 @@
 ﻿using System;
-
 #pragma warning disable 1591
 // ReSharper disable UnusedMember.Global
 // ReSharper disable UnusedParameter.Local
@@ -9,7 +8,7 @@
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
 
-namespace ElfPreview.Annotations
+namespace ElfPreview.Properties
 {
   /// <summary>
   /// Indicates that the value of the marked element could be <c>null</c> sometimes,
@@ -262,7 +261,7 @@ namespace ElfPreview.Annotations
   /// (e.g. via reflection, in external library), so this symbol
   /// will not be marked as unused (as well as by other usage inspections)
   /// </summary>
-  [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
+  [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true), ElfProfiles.Annotations.MeansImplicitUse]
   public sealed class UsedImplicitlyAttribute : Attribute
   {
     public UsedImplicitlyAttribute()

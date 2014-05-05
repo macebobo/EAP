@@ -6,7 +6,7 @@ using System.Xml;
 
 using ElfCore.Util;
 
-using ElfPreview.Annotations;
+using ElfPreview.Properties;
 
 using Vixen = VixenPlus;
 
