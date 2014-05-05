@@ -1,0 +1,93 @@
+﻿Beta 9
+
+Thoughts on improvements
+------------------------
+10 Jan 2013
+-- Use the right mouse button to draw shapes from the center outward, instead of point A to B. Render a set of concentric circles to show the center point.
+-- 3D rendering of mega-trees
+-- RGB painting and line drawing. Add option to specify n-number of colors (ie RGBW). Used for people that render with LED pixels...
+-- Select tool
+	-- Takes marqueed area, display outline differently, allow to flip, rotate, move. Use this to replace moving of selected cells.
+-- Line tool, give option to continuously draw lines, like PhotoPAINT does.
+-- Paint tool, give option to continous stream paint (ie draw line between paints, instead of just the splotch from nib. superimpose nib over each line end point.
+
+14 Dec 2012
+-- Thoughts on how to change the Crop tool
+	--Draw a crop rectangle, show with a solid blue line which is set not on the cells but on the gridlines (if any)
+	--On Unselect, clear the crop area
+	--Save the crop area rectangle into the Workshop object so that the Canvas.Draw event can handle it if we scroll away and back
+	--Add drag nodes to each corner and side of the rectangle
+	--On MouseDown, if over a node, drag to reize the crop area. If within the crop rectangle, move the rectangle. If outside the crop rectangle, redraw the rectangle
+	--Clear button on toolstrip to remove it, or hit Esc key to fire the Cancel method
+	--If zoomed in, make the crop line hug the edge of the cropped zone.
+	
+13 Dec 2012
+
+-- Save Channel data as the smaller (paint pane) bitmap only, not using cells. When rendering for the larger image, use image scaling, possible XOR operation to get color
+	When rendering with grid lines, use the "paint grid" and overlay. If we have grid lines, then scale image up by cell size + 1, the paint grid will cover the extra
+	pixels.
+
+28 Nov 2012 (From notepad)
+
+-- Multi-Select on Channel Explorer - just show of selected, active to be the topof the list
+	-- Add Select All to CE context menu
+
+-- Multiple Channels on Cut, Copy, Paste and Move Channel
+
+-- Show hidden Channels upon the edit of Channel (paint, erase, shape, arch, etc)
+
+-- Select All on Edit menu to marquee select entire canvas
+
+-- Define custom Image Stamps upon import of bitmap - create dynamic drop down item, promt user for item name
+
+-- Definable keybord shortcusts with chords
+
+-- Width and Height of selection on status bar 
+
+-- Fill shape with dither/pre-defined hast fill
+
+-- Shape with no outline 
+
+-- Sort Order on Channel Explorder -- allow user to define new order (will it save to profile?)
+
+-- Allow user to change Channel name on CE (will it save?)
+
+-- Track cursor with horizontal and vertical lines, center on middle of cell.
+
+-- Detect new version. Maybe have some sort of text file on the website to hold most recent version number.
+
+
+20 Nov 2012
+
+Give the option to detach the Preview window from the main window, instead of just doing it automatically.
+
+Video Recording of the Preview with sound
+
+19 Nov 2012
+
+Need to figure if you can quickly overlay transparent images. if not, then test to see if using 1 graphics with with added rectangles is faster
+than our current way to rendering preview image
+
+See if using the scanline method is faster than getpixel for converting a bitmap into a collection of Points
+
+Vector drawing
+	-- how to save and render data from the xml
+	-- use the defined Cell Size as a scaling factor for drawing lines?
+	-- multi-color vector?
+
+Add a 2nd color option to the Channels, one for the Vixen grid, the second for actually rendoring
+
+New tool
+	Chasing lights
+		-- multiChannel (define number of colors (Channels) to use
+		-- When drawing, left click will set an end point, similar to corel paints line, right click ends
+		-- use new ITool plugin tech for it, adding to multi-Channel tool in toolbox.
+
+Found Bugs
+----------
+
+
+Build instructions
+----------------------
+copy "$(TargetPath)" "C:\Program Files (x86)\Vixen 2.5.0.8\Plugins\Output" /y
+copy "$(TargetDir)$(TargetName).pdb" "C:\Program Files (x86)\Vixen 2.5.0.8\Plugins\Output" /y

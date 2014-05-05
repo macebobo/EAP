@@ -1,0 +1,42 @@
+﻿Canvas - The visual representation of the preview, consisting of a gridwork of cells. The Canvas' size takes into account the CellSize, GridLineWidth and Zoom Amount. During
+		Playback, Zoom will always be 100% and not factored into the size of the Canvas.
+
+CanvasPane - PictureBox control that displays the Canvas.
+
+CanvasWindow - The form that holds the display of the CanvasPane PictureBox control
+
+Cell -	A single display unit. Represents a single point on the Lattice, and a square 1 CellSize x 1 CellSize in size.
+
+CellOffset - A calculated value equal to ((CellSize + GridLineWidth) * Zoom)
+
+CellSize - The number of pixels needed to represent a side of a Cell on the Canvas.
+
+CellZoom - A calculated value equal to (CellSize * Zoom)
+
+Channel - Standard Channel from Vixen. Color is defined in the user's Profile, but can be altered within Adjustable Preview.
+
+Flyout - A submenu of Tools that displays when a ToolGroup button is pressed and held for a couple of seconds. Allows for child Tools to display.
+
+Grid - The empty space between the Cells on the Canvas. Grid has no meaning in regards to the Lattice.
+
+GridLineWidth - The amount of space between Cells on the Canvas. If the Grid is not shown, then GridLineWidth = 0
+
+Lattice - The grid of cells itself. A visual representation of the Lattice is a bitmap that is 1 Pixel per Cell.
+
+Multi-Channel Line - A collection of sub-Tools that write Cells on multiple Channels. Taken together, they create visual affects when the Playback switches from Channel to Channel.
+
+Tool - A control in which the user can write Cells out to the Canvas (and thereby the Lattice), or alter the display. Also, the name of the object that holds the code for
+		the Tool, along with its settings ToolStrip control
+
+ToolBox - The control that displays on the left side of the screen that holds Tools and ToolGroups.
+
+ToolGroup - An object that is the parent object of 1 or more Tools, displays on the ToolBox. ToolGroups can be distinguished from regular Tools with the Flyout icon
+			on their button, and when clicked and held down, a submenu (a Flyout) of Tools will appear to the right of the button. When one of these child Tools is clicked,
+			that Tool becomes active and it's image and tool tip will overlay over the existing ToolGroup image and tooltip. If the ToolGroup button is merely clicked, then
+			the most resent selected child Tool becomes active.
+
+PlugInTool - The object that holds the Tool definition, loaded from a different Assembly
+
+PlugInToolGroup - The object that holds the ToolGrpup definition, loaded from a different Assembly
+
+PlugInProfile - The object that holds the Profile definition, loaded from a different Assembly

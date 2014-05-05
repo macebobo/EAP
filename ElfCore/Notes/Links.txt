@@ -1,0 +1,91 @@
+﻿ArraysEqual()
+http://stackoverflow.com/questions/713341/comparing-arrays-in-c-sharp
+
+BitmapEquals()
+http://social.msdn.microsoft.com/Forums/en-US/vbgeneral/thread/bd0eec9e-f811-4fab-a245-08b2882d005c
+
+Bitmaps
+http://www.techotopia.com/index.php/Using_Bitmaps_for_Persistent_Graphics_in_C_Sharp
+
+CloneList<T>()
+http://social.msdn.microsoft.com/Forums/en/csharpgeneral/thread/5c9b4c31-850d-41c4-8ea3-fae734b348c4
+
+Color to Hex or RGB Strings.
+http://stackoverflow.com/questions/2395438/convert-system-drawing-color-to-rgb-and-hex-value
+
+Color Matrix Drawing Effects
+http://www.codeproject.com/Articles/75006/Color-Matrix-Image-Drawing-Effects
+
+Color Xml Serialization
+http://stackoverflow.com/questions/3280362/most-elegant-xml-serialization-of-color-structure
+
+Creating a Custom Dropdown Control
+http://www.codeproject.com/Articles/35068/Creating-a-Custom-DropDown-Control
+
+Custom Enumerator class
+http://msdn.microsoft.com/en-us/library/system.collections.ienumerable.getenumerator.aspx
+
+DrawingControl class
+http://stackoverflow.com/questions/487661/how-do-i-suspend-painting-for-a-control-and-its-children
+
+Event Attachment
+http://stackoverflow.com/questions/1307607/removing-event-handlers
+
+Extends.Clone<T>
+http://stackoverflow.com/questions/222598/how-do-i-clone-a-generic-list-in-c
+
+FloodFill()
+http://social.msdn.microsoft.com/Forums/bg-BG/csharplanguage/thread/9d926a16-0051-4ca3-b77c-8095fb489ae2
+
+Fuzzy Drop Shadow
+http://www.codeproject.com/Articles/15847/Fuzzy-DropShadows-in-GDI
+
+HSLColor class
+https://rootsocket.svn.codeplex.com/svn/RootSocket/Controls/HSLColor.cs
+http://richnewman.wordpress.com/about/code-listings-and-diagrams/hslcolor-class/
+
+Image Manipulate with ColorMatrix objects
+http://www.codeproject.com/Tips/78995/Image-colour-manipulation-with-ColorMatrix
+
+Keyboard and Mouse Hooks
+http://www.codeproject.com/Articles/28064/Global-Mouse-and-Keyboard-Library
+
+ListBox SetDropDownWidth()
+http://weblogs.asp.net/eporter/archive/2004/09/27/234773.aspx
+
+ListBox SetComboScrollWidth()
+http://rajeshkm.blogspot.com/2006/11/adjust-combobox-drop-down-list-width-c.html
+
+ListEquals<T>()
+http://stackoverflow.com/questions/713341/comparing-arrays-in-c-sharp
+
+LoadPlugInAssemblies()
+http://blogs.msdn.com/b/shawnfa/archive/2009/06/08/more-implicit-uses-of-cas-policy-loadfromremotesources.aspx
+
+Most Recently Used File
+http://www.codeproject.com/KB/cs/mrutoolstripmenu.aspx
+
+MultiKeyGesture
+http://stackoverflow.com/questions/11157868/capturing-ctrl-multiple-key-downs
+
+Multiply 2 ColorMatrix Arrays
+http://www.codeproject.com/Articles/7836/Multiple-Matrices-With-ColorMatrix-in-C
+
+MultiSelectTreeview class
+http://www.codeproject.com/Articles/20581/Multiselect-Treeview-Implementation
+
+A Primer on Building a Color Picker User Control with GDI+ in Visual Basic .NET or C#
+http://msdn.microsoft.com/en-us/magazine/cc164113.aspx
+
+Rectangles with Rounded Corners
+http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/d805a3fd-79a7-42c2-9416-83df5df04ca8
+
+Rubberband effect
+http://www.codeproject.com/Articles/1663/Drawing-a-rubber-band-line-in-GDI
+
+Serializing a Graphics Path
+http://social.msdn.microsoft.com/forums/en-US/winforms/thread/bca98504-9ddf-4fa4-acfe-5fa94115cc62/
+
+ToolHost class
+http://www.c-sharpcorner.com/UploadFile/rmcochran/plug_in_architecture09092007111353AM/plug_in_architecture.aspx
+

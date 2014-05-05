@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E9134086-631F-4FB9-A43B-677B36D46FF6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ElfControls</RootNamespace>
+    <AssemblyName>ElfControls</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorBox.Designer.cs">
+      <DependentUpon>ColorBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageDropDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ImageListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SelectColorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectColorForm.Designer.cs">
+      <DependentUpon>SelectColorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorManager.cs" />
+    <Compile Include="ColorGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorGrid.Designer.cs">
+      <DependentUpon>ColorGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ColorWheel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorPicker.Designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorWheel.Designer.cs">
+      <DependentUpon>ColorWheel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DropDownControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DropDownControl.Designer.cs">
+      <DependentUpon>DropDownControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HSLSlider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HSLSlider.Designer.cs">
+      <DependentUpon>HSLSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NamedColor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ColorDropDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorDropDown.Designer.cs">
+      <DependentUpon>ColorDropDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectColorDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SelectColorDialog.Designer.cs">
+      <DependentUpon>SelectColorDialog.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SelectColorForm.resx">
+      <DependentUpon>SelectColorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorGrid.resx">
+      <DependentUpon>ColorGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DropDownControl.resx">
+      <DependentUpon>DropDownControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorDropDown.resx">
+      <DependentUpon>ColorDropDown.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\not_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_not.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\not.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorDropdown.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorGrid.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorPicker.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorWheel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropdownControl.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HSLSlider.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SelectColorDialog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "E:\vplus\build\Plugins\Output" /y
+copy "$(TargetDir)$(TargetName).pdb" "E:\vplus\build\Plugins\Output" /y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

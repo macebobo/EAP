@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BCC21873-2199-4832-A295-F7C006583E0E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Editor</RootNamespace>
+    <AssemblyName>Editor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Vixen">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Vixen 2.1.1.0\Vixen.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EventArgs.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FakeVixen.cs" />
+    <Compile Include="TestPlugin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestPlugin.Designer.cs">
+      <DependentUpon>TestPlugin.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TestPlugin.resx">
+      <DependentUpon>TestPlugin.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_from.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_not.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_sum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verb_to.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-resize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer-vector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixel_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ellipse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eyedropper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fill_tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mask_ellipse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mask_freehand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mask_lasso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mask_paint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mask_rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mask_wand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paint_tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pan_tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\polygon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hidden.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\visible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElfPreview\ElfPreview Vixen 2.1.x.csproj">
+      <Project>{e07989e1-b29f-4124-8724-95837ccf5387}</Project>
+      <Name>ElfPreview Vixen 2.1.x</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_StartDate="2013/2/28" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

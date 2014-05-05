@@ -1,0 +1,39 @@
+﻿------------------------------------------------------------------------------------------------------------------------------------
+http://www.vcskicks.com/draw-translucent-image.php
+
+C# Draw Translucent Image
+
+GDI+ provides an automatic way to draw translucent image in C# without the need for more complicated image processing algorithms. 
+A translucent image can be any image that has a lower opacity than 100%.
+
+The key is to make use of the System.Drawing.Imaging namespace.
+
+Translucent Drawing
+
+First you must set up a Color Matrix that will apply the opacity when you draw translucent image:
+
+	ColorMatrix matrix = new ColorMatrix();
+	matrix.Matrix33 = 0.5f; //opacity 0 = completely transparent, 1 = completely opaque
+	ImageAttributes attributes = new ImageAttributes();
+	attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+Next, as you can see from the C# code above, the color matrix is applied to an ImageAttributes object which will tell GDI+ the color properites 
+to following when drawing the image.
+
+Finally to draw translucent image, use the usual Graphics GDI+ class, for example, something like this:
+
+	Graphics g = Graphics.FromImage(img);
+	g.DrawImage((Image)bmp,
+				 new Rectangle(1, 1, pictureBox1.Width - 2, pictureBox1.Height - 2),
+				 0, 0,
+				 pictureBox1.Width, pictureBox1.Height,
+				 GraphicsUnit.Pixel,
+				 attributes);
+
+Using this method to draw translucent image is a lot simpler than having to manually draw each pixel in an image at the target opacity.
+------------------------------------------------------------------------------------------------------------------------------------
+
+Refresh vs. Invalidate
+http://blogs.msdn.com/b/subhagpo/archive/2005/02/22/378098.aspx
+
+------------------------------------------------------------------------------------------------------------------------------------

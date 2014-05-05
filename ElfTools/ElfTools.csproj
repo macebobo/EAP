@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3BA30CDA-6C9B-4EFF-BB3A-B57845C7F2C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ElfTools</RootNamespace>
+    <AssemblyName>ElfTools</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ButtonImages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ToolGroups\BaseToolGroup.cs" />
+    <Compile Include="ToolGroups\ToolGroup_Mask.cs" />
+    <Compile Include="ToolGroups\ToolGroup_MCL.cs" />
+    <Compile Include="ToolGroups\ToolGroup_Shapes.cs" />
+    <Compile Include="BaseTool.cs" />
+    <Compile Include="Tools\Crop.cs" />
+    <Compile Include="Tools\Ellipse.cs" />
+    <Compile Include="Tools\Eraser.cs" />
+    <Compile Include="Tools\Floodfill.cs" />
+    <Compile Include="Tools\Icicles.cs" />
+    <Compile Include="Tools\ImageStamp.cs" />
+    <Compile Include="Tools\Line.cs" />
+    <Compile Include="MaskBase.cs" />
+    <Compile Include="Tools\Mask_Brush.cs" />
+    <Compile Include="Tools\Mask_Ellipse.cs" />
+    <Compile Include="Tools\Mask_Freehand.cs" />
+    <Compile Include="Tools\Mask_Lasso.cs" />
+    <Compile Include="Tools\Mask_Rectangle.cs" />
+    <Compile Include="Tools\MegaTree.cs" />
+    <Compile Include="Tools\MoveChannel.cs" />
+    <Compile Include="MultiChannelBase.cs" />
+    <Compile Include="Tools\MultiChannelLine.cs" />
+    <Compile Include="Nib.cs" />
+    <Compile Include="Tools\Paintbrush.cs" />
+    <Compile Include="Tools\Polygon.cs" />
+    <Compile Include="Tools\Rectangle.cs" />
+    <Compile Include="ShapeBase.cs" />
+    <Compile Include="Tools\SingingFace.cs" />
+    <Compile Include="Tools\Spray.cs" />
+    <Compile Include="Tools\Text.cs" />
+    <Compile Include="Tools\ToolStripForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Tools_ToolStripContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Tools_ToolStripContainer.Designer.cs">
+      <DependentUpon>Tools_ToolStripContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Zoom.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElfCore\ElfCore.csproj">
+      <Project>{b6abd4d8-8cec-4362-88df-955eb4fef774}</Project>
+      <Name>ElfCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\Tools_ToolStripContainer.resx">
+      <DependentUpon>Tools_ToolStripContainer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashes\dashstyle_dash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashes\dashstyle_dashdot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashes\dashstyle_dashdotdot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashes\dashstyle_dot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashes\dashstyle_solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_remove.png" />
+    <None Include="Resources\Mask\mask_save.png" />
+    <None Include="Resources\Mask\mask_select_all.png" />
+    <None Include="Resources\ToolBox\crop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\ellipse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\eraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\fill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\icicles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\imagestamp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_ellipse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_freehand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_lasso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_paint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_wand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\megatree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\move_channel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\multichannel_lines.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\paintbrush.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\pan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\polygon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\singing_face.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\spray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\undefined.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_additive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_blocky.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_invert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_load_from_disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_reduce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_smooth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_subtractive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_trim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_xor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\show_mask_marquee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\show_mask_overlay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\arch_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\cross_base.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\ellipse_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\fan_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\fill_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\freehand_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\icicles_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\lasso_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\line_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\mask_ellipse_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\mask_rectangle_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\mask_trim_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\mask_xor_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\minus_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\plus_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\polygon_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\rectangle_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\singing_face_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\star_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\tree_modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anticlockwise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arch_left2right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arch_right2left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\candycane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flyout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_arch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_fan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_starcenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round_nib.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rounded_corner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\square_corner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\square_nib.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\underline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\candycane_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\candycane_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\candycane_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\candycane_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\candycane_100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\ghost_5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\ghost_10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\ghost_20.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\ghost_30.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\jack_5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\jack_10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\jack_20.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\jack_30.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\snowflake_7.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\snowflake_10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\snowflake_20.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\snowflake_30.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\tree_5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\tree_10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\tree_20.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image Stamps\tree_30.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\channels.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clockwise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crop_to_mask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flipH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flipV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ghost.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\italic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout_detail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout_simple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pumpkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snowflake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidstar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\cursor_grabbed.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\anticlockwise_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crop_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\singing_face_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\text_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\zoom_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\crop_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\ellipse_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\eraser_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\fill_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\icicles_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\imagestamp_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\line_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_ellipse_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_freehand_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_lasso_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_paint_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_rectangle_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\mask_wand_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\megatree_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\move_channel_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\paintbrush_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\polygon_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\rectangle_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\multichannel_lines_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_smooth_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout_detail_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout_simple_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bold_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\italic_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\underline_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_lines_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arch_left2right_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arch_right2left_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round_nib_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\square_nib_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rounded_corner_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidstar_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\square_corner_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flipH_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flipV_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clockwise_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_arch_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_circle _selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_fan_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_line _selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_star _selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multichannel_starcenter _selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_additive_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_subtractive_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_xor_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_trim_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\mask_blocky_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\spray_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolBox\select_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\channels_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\show_mask_marquee_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask\show_mask_overlay_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snowman.png" />
+    <None Include="Resources\channel_small.png" />
+    <None Include="Resources\channel.png" />
+    <None Include="Resources\arch.png" />
+    <Content Include="Resources\cancel.png" />
+    <Content Include="Resources\font.png" />
+    <Content Include="Resources\fontsize.png" />
+    <None Include="Resources\Image Stamps\snowman_7x11.png" />
+    <None Include="Resources\Image Stamps\snowman_9x17.png" />
+    <None Include="Resources\Image Stamps\snowman_11x24.png" />
+    <None Include="Resources\Image Stamps\snowman_5x6.png" />
+    <Content Include="Resources\image.png" />
+    <None Include="Resources\ToolBox\select.png" />
+    <None Include="Resources\rotate_clockwise_selected.png" />
+    <None Include="Resources\rotate_clockwise.png" />
+    <None Include="Resources\rotate_anticlockwise_selected.png" />
+    <None Include="Resources\rotate_anticlockwise.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "E:\vplus\build\Plugins\Output" /y
+copy "$(TargetDir)$(TargetName).pdb" "E:\vplus\build\Plugins\Output" /y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

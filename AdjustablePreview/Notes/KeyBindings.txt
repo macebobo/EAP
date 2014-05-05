@@ -1,0 +1,46 @@
+﻿Paintbrush Tool				P
+Eraser Tool					E
+Zoom Tool					Z
+Rectangle Tool				R
+Ellpse Tool					E
+Line Tool					L
+Polygon Tool				Y
+Arch Tool					A
+Move Channel Tool			V
+Current Mask				M
+Rectangle Mask				Ctrl+R
+Ellipse Mask				Ctrl+E
+Freehand Mask				Ctrl+F
+Paint Mask					Ctrl+P
+
+Undo						Ctrl+Z
+Redo						Ctrl+Shift+Z
+Cut							Ctrl+X
+Copy						Ctrl+C
+Paste						Ctrl+V
+
+1x1 Pixel Per Cell			Ctrl+Shift+1
+2x2 Pixels Per Cell			Ctrl+Shift+2
+3x3 Pixels Per Cell			Ctrl+Shift+3
+4x4 Pixels Per Cell			Ctrl+Shift+4
+5x5 Pixels Per Cell			Ctrl+Shift+5
+6x6 Pixels Per Cell			Ctrl+Shift+6
+7x7 Pixels Per Cell			Ctrl+Shift+7
+8x8 Pixels Per Cell			Ctrl+Shift+8
+9x9 Pixels Per Cell			Ctrl+Shift+9
+10x10 Pixels Per Cell		Ctrl+Shift+0
+
+Zoom In						F2
+Zoom Out					F3
+
+Invert Mask					Ctrl+I
+Remove Mask					[Ctrl+R]
+
+
+Show Grid Lines				Ctrl+Shift+G
+Set Canvas Resolution		[Ctrl+R]
+Load Background Image		Ctrl+I
+Save Background Image		Ctrl+Shift+S
+Clear Background Image		Ctrl+Shift+I
+Set Canvas to Match Image	Ctrl+Shift+R
+Set Image Brightness		Ctrl+B

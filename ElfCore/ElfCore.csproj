@@ -1,0 +1,521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B6ABD4D8-8CEC-4362-88DF-955EB4FEF774}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ElfCore</RootNamespace>
+    <AssemblyName>ElfCore</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icons\ElfIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Channels\ImageStampChannel.cs" />
+    <Compile Include="Channels\RawChannel.cs" />
+    <Compile Include="App_Data\AssemblyInfo.cs" />
+    <Compile Include="Controllers\KeyboardController.cs" />
+    <Compile Include="Core\Background.cs" />
+    <Compile Include="Core\ChannelMover.cs" />
+    <Compile Include="Core\ElfBase.cs" />
+    <Compile Include="Channels\Channel.cs" />
+    <Compile Include="Controllers\ChannelController.cs" />
+    <Compile Include="Core\ChannelGroup.cs" />
+    <Compile Include="Core\Clipboard.cs" />
+    <Compile Include="Controllers\ChannelGroupController.cs" />
+    <Compile Include="Controllers\ShuffleController.cs" />
+    <Compile Include="Core\Scaling.cs" />
+    <Compile Include="Forms\BackgroundSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BackgroundSettings.Designer.cs">
+      <DependentUpon>BackgroundSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChannelProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChannelProperties.Designer.cs">
+      <DependentUpon>ChannelProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditChannel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditChannel.Designer.cs">
+      <DependentUpon>EditChannel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Editor_MenuClicks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditShuffle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditShuffle.Designer.cs">
+      <DependentUpon>EditShuffle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MappingPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MappingPreview.Designer.cs">
+      <DependentUpon>MappingPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewProfile.Designer.cs">
+      <DependentUpon>NewProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProfileSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileSplash.Designer.cs">
+      <DependentUpon>ProfileSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SetInactiveAlpha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SetInactiveAlpha.Designer.cs">
+      <DependentUpon>SetInactiveAlpha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditSettings.Designer.cs">
+      <DependentUpon>EditSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IBase.cs" />
+    <Compile Include="Interfaces\IItem.cs" />
+    <Compile Include="PlugIn\PlugInProfile.cs" />
+    <Compile Include="PlugIn\PlugInToolGroup.cs" />
+    <Compile Include="Profiles\BaseProfile.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ToolStripMenuItemWithKeys.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Util\DrawingControl.cs" />
+    <Compile Include="UserControls\MultiSelectTreeview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Util\Clipper.cs" />
+    <Compile Include="Util\Constants.cs" />
+    <Compile Include="Util\CustomCursors.cs" />
+    <Compile Include="Util\ElfDisposable.cs" />
+    <Compile Include="Util\Enumerators.cs" />
+    <Compile Include="Util\EnumHelper.cs" />
+    <Compile Include="Util\Enums.cs" />
+    <Compile Include="Util\EventArgs.cs" />
+    <Compile Include="Util\EventHandlers.cs" />
+    <Compile Include="Util\ImageHandler.cs" />
+    <Compile Include="Util\MultiKeyGesture.cs" />
+    <Compile Include="Util\ListBoxUtil.cs" />
+    <Compile Include="Util\LockBitmap.cs" />
+    <Compile Include="Core\Mask.cs" />
+    <Compile Include="Core\MaskData.cs" />
+    <Compile Include="Util\Mapping.cs" />
+    <Compile Include="Util\MRU.cs" />
+    <Compile Include="UserControls\PlugInToolStripButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Util\QColorMatrix.cs" />
+    <Compile Include="Util\Registry.cs" />
+    <Compile Include="Util\Settings.cs" />
+    <Compile Include="Core\Shuffle.cs" />
+    <Compile Include="Util\Static.cs" />
+    <Compile Include="Util\Stopwatch.cs" />
+    <Compile Include="Core\UISettings.cs" />
+    <Compile Include="Controllers\UndoController.cs" />
+    <Compile Include="Core\UndoData.cs" />
+    <Compile Include="Controllers\Workshop.cs" />
+    <Compile Include="Util\XmlHelper.cs" />
+    <Compile Include="Forms\CanvasWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CanvasWindow.Designer.cs">
+      <DependentUpon>CanvasWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChangeLatticeSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeLatticeSize.Designer.cs">
+      <DependentUpon>ChangeLatticeSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChannelExplorerTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChannelExplorerTree.designer.cs">
+      <DependentUpon>ChannelExplorerTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConfigureKeys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfigureKeys.Designer.cs">
+      <DependentUpon>ConfigureKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editor.designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImportFromProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportFromProfile.Designer.cs">
+      <DependentUpon>ImportFromProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IProfile.cs" />
+    <Compile Include="Interfaces\ISettings.cs" />
+    <Compile Include="Util\ClassAttributes.cs" />
+    <Compile Include="Interfaces\ITool.cs" />
+    <Compile Include="Interfaces\IToolGroup.cs" />
+    <Compile Include="PlugIn\PlugInTool.cs" />
+    <Compile Include="PlugIn\PlugInController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ToolWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\ToolWindow.designer.cs">
+      <DependentUpon>ToolWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ViewBufferPane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewBufferPane.Designer.cs">
+      <DependentUpon>ViewBufferPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XmlSerializers\XmlGraphicsPath.cs" />
+    <Compile Include="XmlSerializers\XmlColor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElfControls\ElfControls.csproj">
+      <Project>{e9134086-631f-4fb9-a43b-677b36d46ff6}</Project>
+      <Name>ElfControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinFormsUI\WinFormsUI.csproj">
+      <Project>{C75532C4-765B-418E-B09B-46D36B2ABDB1}</Project>
+      <Name>WinFormsUI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\BackgroundSettings.resx">
+      <DependentUpon>BackgroundSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CanvasWindow.resx">
+      <DependentUpon>CanvasWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeLatticeSize.resx">
+      <DependentUpon>ChangeLatticeSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChannelExplorerTree.resx">
+      <DependentUpon>ChannelExplorerTree.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChannelProperties.resx">
+      <DependentUpon>ChannelProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConfigureKeys.resx">
+      <DependentUpon>ConfigureKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditChannel.resx">
+      <DependentUpon>EditChannel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportFromProfile.resx">
+      <DependentUpon>ImportFromProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditShuffle.resx">
+      <DependentUpon>EditShuffle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MappingPreview.resx">
+      <DependentUpon>MappingPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewProfile.resx">
+      <DependentUpon>NewProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileSplash.resx">
+      <DependentUpon>ProfileSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SetInactiveAlpha.resx">
+      <DependentUpon>SetInactiveAlpha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditSettings.resx">
+      <DependentUpon>EditSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewBufferPane.resx">
+      <DependentUpon>ViewBufferPane.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lattice.png" />
+    <None Include="Resources\undefined.png" />
+    <None Include="Resources\Annotations\annotation_sort_ascending.png" />
+    <None Include="Resources\Annotations\annotation_shortcut.png" />
+    <None Include="Resources\Annotations\annotation_security_good.png" />
+    <None Include="Resources\Annotations\annotation_security_bad.png" />
+    <None Include="Resources\Annotations\annotation_security_alert.png" />
+    <None Include="Resources\Annotations\annotation_right.png" />
+    <None Include="Resources\Annotations\annotation_required.png" />
+    <None Include="Resources\Annotations\annotation_refresh.png" />
+    <None Include="Resources\Annotations\annotation_redo.png" />
+    <None Include="Resources\Annotations\annotation_playround.png" />
+    <None Include="Resources\Annotations\annotation_pause.png" />
+    <None Include="Resources\Annotations\annotation_left.png" />
+    <None Include="Resources\Annotations\annotation_info.png" />
+    <None Include="Resources\Annotations\annotation_help.png" />
+    <None Include="Resources\Annotations\annotation_export.png" />
+    <None Include="Resources\Annotations\annotation_down.png" />
+    <None Include="Resources\Annotations\annotation_complete.png" />
+    <None Include="Resources\Annotations\annotation_clear.png" />
+    <None Include="Resources\Annotations\annotation_blocked.png" />
+    <None Include="Resources\Annotations\annotation_alert.png" />
+    <None Include="Resources\Annotations\annotation_warning.png" />
+    <None Include="Resources\Annotations\annotation_up.png" />
+    <None Include="Resources\Annotations\annotation_undo.png" />
+    <None Include="Resources\Annotations\annotation_stop.png" />
+    <None Include="Resources\Annotations\annotation_sort_descending.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\sample_swatch.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\recent.png" />
+    <None Include="Resources\Annotations\annotation_star.png" />
+    <None Include="Resources\Annotations\annotation_1to1.png" />
+    <None Include="Resources\newchannel.png" />
+    <None Include="Resources\Annotations\annotation_clear2.png" />
+    <None Include="Resources\clearchannel.png" />
+    <None Include="Resources\image-import.png" />
+    <None Include="Resources\Annotations\annotation_grid.png" />
+    <None Include="Resources\Annotations\annotation_monitor.png" />
+    <None Include="Resources\reorder.png" />
+    <None Include="Resources\Annotations\annotation_visible.png" />
+    <None Include="Resources\newprofile.png" />
+    <None Include="Resources\newshuffle.png" />
+    <None Include="Resources\fillMode_center.png" />
+    <None Include="Resources\fillMode_fill.png" />
+    <None Include="Resources\fillMode_fit.png" />
+    <None Include="Resources\fillMode_stretch.png" />
+    <None Include="Resources\fillMode_tile.png" />
+    <None Include="Resources\anchor_bottomLeft.png" />
+    <None Include="Resources\anchor_bottomRight.png" />
+    <None Include="Resources\anchor_topleft.png" />
+    <None Include="Resources\anchor_topRight.png" />
+    <Content Include="Resources\settings.png" />
+    <None Include="Resources\transparency.png" />
+    <None Include="Resources\Annotations\annotation_plusone.png" />
+    <None Include="Resources\up_small.png" />
+    <None Include="Resources\right_small.png" />
+    <None Include="Resources\left_small.png" />
+    <None Include="Resources\Annotations\annotation_include.png" />
+    <None Include="Resources\Annotations\annotation_invisible.png" />
+    <None Include="Resources\Annotations\annotation_exclude.png" />
+    <None Include="Resources\Annotations\annotation_play.png" />
+    <None Include="Resources\properties.png" />
+    <None Include="Resources\up.png" />
+    <Content Include="Resources\to_top.png" />
+    <None Include="Resources\right.png" />
+    <None Include="Resources\left.png" />
+    <Content Include="Resources\to_bottom.png" />
+    <None Include="Resources\Annotations\annotation_locked.png" />
+    <None Include="Resources\to_back.png" />
+    <None Include="Resources\to_front.png" />
+    <None Include="Resources\Annotations\annotation_paint.png" />
+    <None Include="Resources\ruler.png" />
+    <None Include="Resources\Annotations\annotation_flyout.png" />
+    <None Include="Resources\Annotations\annotation_import.png" />
+    <None Include="Resources\Annotations\annotation_remove.png" />
+    <None Include="Resources\Annotations\annotation_save.png" />
+    <None Include="Resources\Annotations\annotation_open.png" />
+    <None Include="Resources\Annotations\annotation_trash.png" />
+    <None Include="Resources\Annotations\annotation_image.png" />
+    <None Include="Resources\Annotations\annotation_vector.png" />
+    <None Include="Resources\Annotations\annotation_as.png" />
+    <None Include="Resources\Annotations\annotation_create.png" />
+    <None Include="Resources\visible.png" />
+    <None Include="Resources\Annotations\annotation_close.png" />
+    <None Include="App.config" />
+    <None Include="App_Data\ElfClassDiagram.cd" />
+    <None Include="Notes\Bugs and Potential Features.txt" />
+    <None Include="Notes\Editable Adjustable Preview PlugIn.docx" />
+    <None Include="Resources\image.png" />
+    <Content Include="Notes\Definitions.txt" />
+    <Content Include="Notes\KeyBindings.txt" />
+    <Content Include="Notes\Links.txt" />
+    <Content Include="Notes\Programming Notes.txt" />
+    <Content Include="Notes\Release Notes.txt" />
+    <None Include="Resources\background.png" />
+    <None Include="Resources\channels.png" />
+    <None Include="Resources\back_one.png" />
+    <None Include="Resources\channel.png" />
+    <None Include="Resources\channel_to_background.png" />
+    <None Include="Resources\grid.png" />
+    <None Include="Resources\forward_one.png" />
+    <None Include="Resources\down.png" />
+    <None Include="Resources\down_small.png" />
+    <Content Include="Resources\Icons\AdjustablePreview.ico" />
+    <Content Include="Resources\Icons\background.ico" />
+    <Content Include="Resources\Icons\channel.ico" />
+    <Content Include="Resources\Icons\color.ico" />
+    <Content Include="Resources\Icons\import_profile.ico" />
+    <Content Include="Resources\Icons\key.ico" />
+    <Content Include="Resources\Icons\keyboard.ico" />
+    <Content Include="Resources\Icons\keyboard2.ico" />
+    <Content Include="Resources\Icons\map.ico" />
+    <Content Include="Resources\Icons\preview.ico" />
+    <Content Include="Resources\Icons\preview_32.ico" />
+    <Content Include="Resources\Icons\preview_48.ico" />
+    <Content Include="Resources\Icons\profile.ico" />
+    <Content Include="Resources\Icons\setbrightness.ico" />
+    <Content Include="Resources\Icons\set_canvas.ico" />
+    <Content Include="Resources\Icons\sort_order.ico" />
+    <Content Include="Resources\Icons\Vixen3.png" />
+    <Content Include="Resources\Icons\zapper.ico" />
+    <Content Include="Resources\Icons\zapper16.ico" />
+    <Content Include="Resources\Icons\zapper32.ico" />
+    <Content Include="Resources\Icons\zapper48.ico" />
+    <None Include="Resources\Annotations\annotation_not.png" />
+    <None Include="Resources\Annotations\annotation_new.png" />
+    <None Include="Resources\Annotations\annotation_find.png" />
+    <None Include="Resources\Annotations\annotation_error.png" />
+    <None Include="Resources\Annotations\annotation_edit.png" />
+    <None Include="Resources\Annotations\annotation_delete.png" />
+    <None Include="Resources\Annotations\annotation_check.png" />
+    <None Include="Resources\Annotations\annotation_add.png" />
+    <None Include="Resources\update.png" />
+    <None Include="Resources\ungroup.png" />
+    <None Include="Resources\undo.png" />
+    <None Include="Resources\shuffle.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\redo.png" />
+    <None Include="Resources\paste.png" />
+    <None Include="Resources\palette.png" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\map.png" />
+    <None Include="Resources\lock.png" />
+    <None Include="Resources\keyboard.png" />
+    <None Include="Resources\group.png" />
+    <None Include="Resources\rename.png" />
+    <None Include="Resources\cut.png" />
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\channel_small.png" />
+    <None Include="Resources\profile.png" />
+    <None Include="Resources\CellSize\pixel_9.png" />
+    <None Include="Resources\CellSize\pixel_8.png" />
+    <None Include="Resources\CellSize\pixel_7.png" />
+    <None Include="Resources\CellSize\pixel_6.png" />
+    <None Include="Resources\CellSize\pixel_5.png" />
+    <None Include="Resources\CellSize\pixel_4.png" />
+    <None Include="Resources\CellSize\pixel_3.png" />
+    <None Include="Resources\CellSize\pixel_2.png" />
+    <None Include="Resources\CellSize\pixel_10.png" />
+    <None Include="Resources\CellSize\pixel_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Annotations\Masks\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_StartDate="2013/2/28" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "E:\vplus\build\Plugins\Output" /y
+copy "$(TargetDir)$(TargetName).pdb" "E:\vplus\build\Plugins\Output" /y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

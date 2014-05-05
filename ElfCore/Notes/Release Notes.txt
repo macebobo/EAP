@@ -1,0 +1,75 @@
+﻿v1.0 Beta 1.0 -- ?? Nov 2012
+
+•	Removed the old user interface. If people wanted to use it, they would not be using this newer version.
+•	Added rulers on the top and left side of the Canvas to visually measure where the cursor is at. This can be switched on and off under the Settings menu.
+•	Added plug-in tool capability, using the AdjustablePreview.PlugIns.ITool interface. Gives you all the ability to create new tools to create new drawing tools 
+	for the Editor.
+•	New Crop tool added, allowing user to reduce the size of the canvas just by selecting the area to crop it down to.
+•	Added Intensity value for the Spray tool.
+
+v1.0 Beta 8 -- 12 Nov 2012 
+ 
+•	Added new tool: TEXT. Allows you to insert text with any font, size and style, just like the big boys. 
+	After entering the text string in the input box, you then set it on the canvas like you were using a one-time Image Stamp.
+•	Fixed the bug in which the MegaTree and Singing Face were accidentally picking up the line style attributes (width, dash-pattern) from the shape tool. 
+	If anyone actually like that, let me know and I will make it a feature.
+•	Fixed a bug in which the Arch tool was picking up the dash style... yada yada yada.
+•	Added some error detection and report code. There will be a log file created in your profile directory, next to the .settings file. 
+	If you get an error, please either send me the file, or just cut out the bit with the exact error message and post in this thread.
+•	Added the ability to have ROUNDED CORNERS to rectangles. Specify the roundiness in terms of radius of a circle for the corners.
+•	Fixed a minor issue that came up when using your arrow keys to change a value in the settings text and combo boxes, the main editor form was 
+	capturing that and trying to manipulate the Channel Explorer window. The code now slaps its hand and lets you arrow away.
+•	Last but not least, expanded the Arch tool to handle new multi-Channel arrangements. Tool is now named MULTI-Channel LINE, and Arch 
+	is just the first of 6 arrangements available. Arrangements include Arch, Circle, Fan, Line, Star and StarBurst.
+
+v1.0 Beta 7 -- 7 Nov 2012 
+ 
+•	Undo fixed for the MegaTree multi-Channel effect. Now will Undo all Channels effected.
+•	Undo fixed for the Singing Face multi-Channel effect. Now will Undo all Channels effected.
+•	Settings removed from the Registry. They can now be found in the file "AdjPreview.settings" in the Vixen folder under AppData in your 
+	profile directory (C:\users\<your user name>\AppData\Vixen).
+•	A straight Arch (i.e. a "line") option has been added to the Arch toolbar.
+•	Fixed the odd scaling error when creating a Singing Face multi-Channel effect.
+•	Added warning icons to the MegaTree toolbar to indicate if the values entered make sense mathematically or would need more Channels than the profile currently has.
+•	Forced focus to the main Vixen window during playback, in order to make entering keyboard commands happen (i.e. pressing the space bar, 
+	or using keyboard shortcuts to start, pause and stop the playback).
+•	Added a "flyout" indictor to the toolbar to indicate tools that have a submenu associated with them.
+•	Added the current profile filename to the title bar of the Editor window.
+•	Reintroduced the ability to determine which Channels are active while hover over a given cell. Channel name(s) appear on the status bar at the bottom 
+	of the screen, similar to the original.
+•	Reintroduced the ability to delete cells from all Channels by holding down the Control key of the keyboard. Note that the system takes a few seconds 
+	to process all the Channels once the mouse button is released. I am looking into methods to speed this up.
+•	Fixed the tooltip for the Spray tool.
+•	Exiting the Editor via the File menu, whether it be Saving or Canceling, the Editor should not prompt you if you want to save. You should only see that 
+	prompt if you close the window by clicking the red X in the upper right corner after making some changes.
+
+v1.0 Beta 6 -- 18 Oct 2012 
+
+•	Fixed an issue so that you can use the play, pause, etc hotkeys when the preview window has focus.
+•	The paintbrush is a tiny bit slow between the mouse down event and when you start moving, but if you hold down the brush, it picks up quickly. 
+	There is an option in Settings about painting on grid lines, uncheck that to see if your performance picks up...
+
+v1.0 Beta 5 -- 18 Oct 2012 
+ 
+•	Forcing the Alpha value to be a byte, so it cannot exceed the 0..255 bounds.
+•	The Channels like where they are, relative to each other. Now you can move them all together!
+•	Hate the mouse? Now you can move some or all of the Channels by holding down Control+Shift and an arrow key.
+•	Being the rebel that it is, the Preview window has broken away from the main window of Vixen. Now it can go to any darned screen it wants to! Huzzah Freedom!
+•	Some of the menu items have had their keyboard shortcuts changed or added.
+
+v1.0 Beta 4 -- 16 Oct 2012
+
+•	Various fixes
+
+v1.0 Beta 3 -- 12 Oct 2012
+
+•	Various fixes
+•	Vixen 2.5 support
+
+v1.0 Beta 2 -- 12 Oct 2012
+
+•	Various fixes, new tools added
+
+v1.0 Beta 1 -- 11 Oct 2012
+
+•	Initial release
