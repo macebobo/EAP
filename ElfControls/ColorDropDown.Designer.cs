@@ -1,6 +1,6 @@
 ﻿namespace ElfControls
 {
-	partial class ColorDropDown
+    sealed partial class ColorDropDown
 	{
 		/// <summary> 
 		/// Required designer variable.

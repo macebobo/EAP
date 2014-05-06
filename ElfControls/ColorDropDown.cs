@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,25 +8,24 @@ using ElfControls.Properties;
 
 namespace ElfControls {
     [ToolboxBitmap(@"C:\Users\roba\Documents\Visual Studio 2012\Projects\Editable Adjustable Preview\ElfControls\Resources\ColorDropdown.bmp")]
-    public partial class ColorDropDown : DropDownControl {
+    public sealed partial class ColorDropDown : DropDownControl {
         #region [ Private Variables ]
 
         private Image _cancelButtonImage;
         private Color _color = Color.White;
-        private Size _dropdownSize = new Size(185, 300);
         private bool _embiggenHotTracked;
         private bool _hotTracking;
         private bool _isUpdating = true;
-        private bool _knownColorsInList = true;
-        private Size _listGridSize = new Size(16, 16);
-        private byte _listPadding = 4;
+        //private bool _knownColorsInList = true;
+        //private Size _listGridSize = new Size(16, 16);
+        //private byte _listPadding = 4;
         private Image _noColorImage;
         private Image _okButtonImage;
-        private byte _paletteGridPadding = 4;
-        private Size _paletteGridSize = new Size(16, 16);
-        private bool _showRGBOnToolTip;
+        //private byte _paletteGridPadding = 4;
+        //private Size _paletteGridSize = new Size(16, 16);
+        //private bool _showRGBOnToolTip;
         private bool _showSystemColors = true;
-        private bool _systemColorsInList = true;
+        //private bool _systemColorsInList = true;
 
         #endregion [ Private Variables ]
 
@@ -42,6 +41,7 @@ namespace ElfControls {
             set { PaletteColorGrid.AllowEmptyColor = value; }
         }
 
+/*
         /// <summary>
         ///     Indicates whether the "add colors" button should show
         /// </summary>
@@ -51,6 +51,7 @@ namespace ElfControls {
             get { return PaletteColorGrid.AllowAddColors; }
             set { PaletteColorGrid.AllowAddColors = value; }
         }
+*/
 
         [DefaultValue(typeof (BorderStyle), "None")]
         [Description("Indicates whether the control should have a border.")]
@@ -144,9 +145,9 @@ namespace ElfControls {
             get { return base.Font; }
             set {
                 base.Font = value;
-                var SubFont = new Font(value.FontFamily, value.SizeInPoints - 1f);
-                KnownColorsList.Font = SubFont;
-                SystemColorsList.Font = SubFont;
+                var subFont = new Font(value.FontFamily, value.SizeInPoints - 1f);
+                KnownColorsList.Font = subFont;
+                SystemColorsList.Font = subFont;
             }
         }
 
@@ -161,6 +162,7 @@ namespace ElfControls {
             }
         }
 
+/*
         /// <summary>
         ///     Indicates whether the KnownColors list should be show as a list, instead of a color grid.
         /// </summary>
@@ -173,7 +175,9 @@ namespace ElfControls {
                 KnownColorsList.ShowNames = value;
             }
         }
+*/
 
+/*
         /// <summary>
         ///     Spacing between the color rows for the color lists.
         /// </summary>
@@ -187,7 +191,9 @@ namespace ElfControls {
                 KnownColorsList.GridPadding = value;
             }
         }
+*/
 
+/*
         /// <summary>
         ///     Size of the color grid rectangles for lists.
         /// </summary>
@@ -201,6 +207,7 @@ namespace ElfControls {
                 KnownColorsList.GridSize = _listGridSize;
             }
         }
+*/
 
         [Description("Custom image to use for the OK button on the Select Color dialog.")]
         public Image NoColorIndicatorImage {
@@ -228,6 +235,7 @@ namespace ElfControls {
             }
         }
 
+/*
         /// <summary>
         ///     Spacing between the color grid rectangles in the palette color grid.
         /// </summary>
@@ -240,7 +248,9 @@ namespace ElfControls {
                 PaletteColorGrid.GridPadding = value;
             }
         }
+*/
 
+/*
         /// <summary>
         ///     Size of the color grid rectangles in the palette color grid.
         /// </summary>
@@ -253,6 +263,7 @@ namespace ElfControls {
                 PaletteColorGrid.GridSize = value;
             }
         }
+*/
 
         public override ComboBoxStyle DropDownStyle {
             get { return base.DropDownStyle; }
@@ -263,6 +274,7 @@ namespace ElfControls {
             }
         }
 
+/*
         [DefaultValue(typeof (bool), "False")]
         [Description("Display the color RGB values on the tooltip.")]
         public bool ShowRGBValuesOnToolTip {
@@ -274,7 +286,9 @@ namespace ElfControls {
                 KnownColorsList.ShowRGBValuesOnToolTip = value;
             }
         }
+*/
 
+/*
         /// <summary>
         ///     Indicates whether the SystemColors list should be show as a list, instead of a color grid.
         /// </summary>
@@ -287,6 +301,7 @@ namespace ElfControls {
                 SystemColorsList.ShowNames = value;
             }
         }
+*/
 
         #endregion [ Properties ]
 
@@ -320,6 +335,7 @@ namespace ElfControls {
         }
 
 
+/*
         /// <summary>
         ///     Adds a new color to the Custom Color list.
         /// </summary>
@@ -328,18 +344,24 @@ namespace ElfControls {
         public void AddCustomColor(string name, Color color) {
             PaletteColorGrid.AddColor(color, name);
         }
+*/
 
 
+/*
         /// <summary>
         ///     Adds a new color to the Custom Color list.
         /// </summary>
         /// <param name="name">Name of the color</param>
-        /// <param name="color">Color to add</param>
+        /// <param name="red">Red compenent of color to add</param>
+        /// <param name="green">Green compenent of color to add</param>
+        /// <param name="blue">Blue compenent of color to add</param>
         public void AddCustomColor(string name, byte red, byte green, byte blue) {
             PaletteColorGrid.AddColor(Color.FromArgb(red, green, blue), name);
         }
+*/
 
 
+/*
         /// <summary>
         ///     Adds a new color to the Custom Color list.
         /// </summary>
@@ -347,14 +369,17 @@ namespace ElfControls {
         public void AddCustomColor(Color color) {
             AddCustomColor(color, string.Empty);
         }
+*/
 
 
+/*
         /// <summary>
         ///     Clears out all the custom colors.
         /// </summary>
         public void ClearCustomColors() {
             PaletteColorGrid.Clear();
         }
+*/
 
 
         ///// <summary>
@@ -367,6 +392,7 @@ namespace ElfControls {
         //	this.PaletteColorGrid.LoadCustomColors(colorList, ignoreDuplicateColors);
         //}
 
+/*
         /// <summary>
         ///     Load in a predefined palette of colors into the CustomList colorgrid.
         /// </summary>
@@ -374,6 +400,7 @@ namespace ElfControls {
         public void LoadPalette(List<NamedColor> palette) {
             PaletteColorGrid.LoadPalette(palette);
         }
+*/
 
 
         protected override void OpenDropDown() {
@@ -383,12 +410,7 @@ namespace ElfControls {
 
 
         private void SetColorPanelBorder() {
-            if (BorderStyle == BorderStyle.None) {
-                cpnlDisplayColor.BorderStyle = BorderStyle.FixedSingle;
-            }
-            else {
-                cpnlDisplayColor.BorderStyle = BorderStyle.None;
-            }
+            cpnlDisplayColor.BorderStyle = BorderStyle == BorderStyle.None ? BorderStyle.FixedSingle : BorderStyle.None;
         }
 
         #endregion [ Methods ]
@@ -403,7 +425,7 @@ namespace ElfControls {
 
         #region [ Event Triggers ]
 
-        protected void OnColorChanged() {
+        private void OnColorChanged() {
             if (ColorChanged != null) {
                 ColorChanged(null, null);
             }
@@ -419,6 +441,7 @@ namespace ElfControls {
 
         #endregion [ Event Triggers ]
 
+/*
         private void cmdSelect_Click(object sender, EventArgs e) {
             if (_isUpdating) {
                 return;
@@ -434,6 +457,7 @@ namespace ElfControls {
                 UnFreezeDropDown();
             }
         }
+*/
 
 
         private void PaletteColorGrid_SelectedIndexChange(object sender, EventArgs e) {

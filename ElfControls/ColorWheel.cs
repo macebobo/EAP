@@ -121,8 +121,8 @@ namespace ElfControls {
         /// <summary>
         ///     The drawstyle of the contol (Hue, Saturation, Brightness)
         /// </summary>
-        //[DefaultValue(typeof(eDrawStyle), "Hue")]
-        //public eDrawStyle DrawStyle
+        //[DefaultValue(typeof(DrawStyles), "Hue")]
+        //public DrawStyles DrawStyle
         //{
         //    get { return _drawStyle; }
         //    set

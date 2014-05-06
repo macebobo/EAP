@@ -26,7 +26,7 @@ namespace ElfControls {
 
         #endregion
 
-        #region eDrawStyle enum
+        #region DrawStyles enum
 
         public enum eDrawStyle {
             Hue,

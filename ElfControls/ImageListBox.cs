@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace ElfControls {
     /// <summary>
     ///     ListBox modified to display an image on the left side of the text.
     /// </summary>
-    public class ImageListBox : ListBox {
+    public sealed class ImageListBox : ListBox {
         #region [ Constructors ]
 
         public ImageListBox() {
@@ -19,8 +20,8 @@ namespace ElfControls {
         #region [ Events ]
 
         protected override void OnDrawItem(DrawItemEventArgs e) {
-            string Text = string.Empty;
-            Bitmap Bitmap = null;
+            var text = string.Empty;
+            Bitmap bitmap = null;
 
             // Get the Bounding rectangle
             var rc = new Rectangle(e.Bounds.X + 16, e.Bounds.Y, e.Bounds.Width - 16, e.Bounds.Height);
@@ -32,15 +33,16 @@ namespace ElfControls {
             e.Graphics.FillRectangle(new SolidBrush(Color.White), rc);
 
             var r1 = new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
-            int YOffset = 0;
+            var yOffset = 0;
 
             // Get the bitmap for this entry
             if ((e.Index < Items.Count) && (e.Index >= 0)) {
-                Text = Items[e.Index].ToString();
-                if (Items[e.Index] is ImageListItem) {
-                    Bitmap = ((ImageListItem) Items[e.Index]).Image;
+                text = Items[e.Index].ToString();
+                var item = Items[e.Index] as ImageListItem;
+                if (item != null) {
+                    bitmap = item.Image;
                 }
-                YOffset = (e.Bounds.Height - ((Bitmap != null) ? Bitmap.Height : 0)) / 2;
+                yOffset = (e.Bounds.Height - ((bitmap != null) ? bitmap.Height : 0)) / 2;
             }
 
             if (Enabled) {
@@ -51,62 +53,63 @@ namespace ElfControls {
                         e.DrawFocusRectangle();
                     }
                     e.Graphics.FillRectangle(SystemBrushes.Highlight, r1);
-                    if (Bitmap != null) {
-                        e.Graphics.DrawImage(Bitmap, e.Bounds.X, e.Bounds.Y + YOffset, Bitmap.Width, Bitmap.Height);
+                    if (bitmap != null) {
+                        e.Graphics.DrawImage(bitmap, e.Bounds.X, e.Bounds.Y + yOffset, bitmap.Width, bitmap.Height);
                     }
-                    e.Graphics.DrawString(Text, Font, SystemBrushes.HighlightText, rc, sf);
+                    e.Graphics.DrawString(text, Font, SystemBrushes.HighlightText, rc, sf);
                 }
                 else {
                     // Paint the item that if not selected
                     e.Graphics.FillRectangle(SystemBrushes.Window, r1);
-                    if (Bitmap != null) {
-                        e.Graphics.DrawImage(Bitmap, e.Bounds.X, e.Bounds.Y + YOffset, Bitmap.Width, Bitmap.Height);
+                    if (bitmap != null) {
+                        e.Graphics.DrawImage(bitmap, e.Bounds.X, e.Bounds.Y + yOffset, bitmap.Width, bitmap.Height);
                     }
-                    e.Graphics.DrawString(Text, Font, SystemBrushes.WindowText, rc, sf);
+                    e.Graphics.DrawString(text, Font, SystemBrushes.WindowText, rc, sf);
                     e.DrawFocusRectangle();
                 }
             }
             else {
                 // Paint the item disabled
                 e.Graphics.FillRectangle(SystemBrushes.Window, r1);
-                if (Bitmap != null) {
-                    e.Graphics.DrawImage(Bitmap, e.Bounds.X, e.Bounds.Y + YOffset, Bitmap.Width, Bitmap.Height);
+                if (bitmap != null) {
+                    e.Graphics.DrawImage(bitmap, e.Bounds.X, e.Bounds.Y + yOffset, bitmap.Width, bitmap.Height);
                 }
-                e.Graphics.DrawString(Text, Font, SystemBrushes.GrayText, rc, sf);
+                e.Graphics.DrawString(text, Font, SystemBrushes.GrayText, rc, sf);
                 e.DrawFocusRectangle();
             }
         }
 
 
         protected override void OnMeasureItem(MeasureItemEventArgs e) {
-            int Height = 0;
+            var height = 0;
 
             if ((e.Index < Items.Count) && (e.Index >= 0)) {
                 Bitmap bmp = null;
-                if (Items[e.Index] is ImageListItem) {
-                    bmp = ((ImageListItem) Items[e.Index]).Image;
+                var item = Items[e.Index] as ImageListItem;
+                if (item != null) {
+                    bmp = item.Image;
                 }
                 if (bmp != null) {
-                    Height = bmp.Height;
+                    height = bmp.Height;
                 }
             }
-            SizeF TextSize = e.Graphics.MeasureString("Xfg", Font);
+            var textSize = e.Graphics.MeasureString("Xfg", Font);
 
-            e.ItemHeight = Math.Max(Height, (int) Math.Ceiling(TextSize.Height));
+            e.ItemHeight = Math.Max(height, (int) Math.Ceiling(textSize.Height));
         }
 
         #endregion [ Events ]
     }
 
     public class ImageListItem {
-        public Bitmap Image = null;
-        public string Key = string.Empty;
-        public object Tag = null;
+        public Bitmap Image;
+        public readonly string Key = string.Empty;
+        public readonly object Tag;
         public string Text = string.Empty;
 
         #region[ Constructors ]
 
-        public ImageListItem(string text) {
+        private ImageListItem(string text) {
             Text = text;
         }
 
@@ -116,9 +119,11 @@ namespace ElfControls {
         }
 
 
+/*
         public ImageListItem(string text, Bitmap image) : this(text) {
             Image = image;
         }
+*/
 
 
         public ImageListItem(string text, string key, Bitmap image) : this(text, key) {
@@ -126,7 +131,7 @@ namespace ElfControls {
         }
 
 
-        public ImageListItem(string text, int key, Bitmap image) : this(text, key.ToString()) {
+        public ImageListItem(string text, int key, Bitmap image) : this(text, key.ToString(CultureInfo.InvariantCulture)) {
             Image = image;
         }
 
