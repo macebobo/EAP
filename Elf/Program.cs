@@ -19,10 +19,10 @@ namespace Elf {
 
 
         private static void LaunchEditor(string[] args) {
-            Settings settings = Settings.Instance;
+            var settings = Settings.Instance;
             settings.Style = Settings.SettingsStyle.Xml;
 
-            Workshop workshop = Workshop.Instance;
+            var workshop = Workshop.Instance;
             workshop.RunMode = RunMode.Standalone;
             workshop.Initialize();
 
