@@ -3,30 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace ElfControls {
     [ToolboxBitmap(@"C:\Users\roba\Documents\Visual Studio 2012\Projects\Editable Adjustable Preview\ElfControls\Resources\ColorPicker.bmp")]
     public partial class ColorPicker : UserControl {
-        #region [ Enums ]
-
-        public enum eDrawStyle {
-            Hue,
-            Saturation,
-            Brightness
-        }
-
-        #endregion [ Enums ]
 
         #region [ Private Variables ]
 
-        private ColorManager.CMYK _cmyk;
         private Color _color = Color.Red;
         private bool _colorEvent;
         private ColorManager.HSL _hsl;
-        private bool _isUpdating;
-        private bool _showKnownNames = true;
+        private bool _isInternalUpdate;
 
         #endregion [ Private Variables ]
 
@@ -55,7 +43,6 @@ namespace ElfControls {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         public NamedColor NamedColor {
-            get { return new NamedColor(Color, ColorName); }
             set {
                 if (value == null) {
                     return;
@@ -68,21 +55,7 @@ namespace ElfControls {
         [DefaultValue(typeof (int), "-90")]
         [Description("Degree offset for the color Red.")]
         public double RedOffset {
-            get { return colorWheel1.RedOffset; }
             set { colorWheel1.RedOffset = value; }
-        }
-
-        /// <summary>
-        ///     Override custom name with known name of the color, if any.
-        /// </summary>
-        [DefaultValue(typeof (bool), "True")]
-        [Description("Override custom name with known name of the color, if any.")]
-        public bool ShowKnownNames {
-            get { return _showKnownNames; }
-            set {
-                _showKnownNames = value;
-                UpdateUI(colorWheel1.Color);
-            }
         }
 
         #endregion [ Properties ]
@@ -92,11 +65,6 @@ namespace ElfControls {
         public ColorPicker() {
             InitializeComponent();
             Color = Color.Red;
-        }
-
-
-        public ColorPicker(Color color) : this() {
-            Color = color;
         }
 
         #endregion [ Constructors ]
@@ -109,27 +77,29 @@ namespace ElfControls {
         /// </summary>
         /// <param name="color">Color to check.</param>
         private string GetKnownColorName(Color color) {
-            Array colorsArray = Enum.GetValues(typeof (KnownColor));
+            var colorsArray = Enum.GetValues(typeof (KnownColor));
             var allColors = new KnownColor[colorsArray.Length];
             Array.Copy(colorsArray, allColors, colorsArray.Length);
-            List<string> SystemEnvironmentColors = GetSystemColorNames();
-            string SystemName = string.Empty;
-            string Name = string.Empty;
-            string KnownName = string.Empty;
+            var systemEnvironmentColors = GetSystemColorNames();
+            var systemName = string.Empty;
 
-            for (int i = allColors.Length - 1; i >= 0; i--) {
-                KnownName = allColors[i].ToString();
-                if (Color.FromName(KnownName).ToArgb() == color.ToArgb()) {
-                    Name = KnownName;
-                    if (SystemEnvironmentColors.Contains(Name)) {
-                        SystemName = Name;
-                    }
-                    else {
-                        return Name;
-                    }
+            for (var i = allColors.Length - 1; i >= 0; i--) {
+                var knownName = allColors[i].ToString();
+
+                if (Color.FromName(knownName).ToArgb() != color.ToArgb()) {
+                    continue;
+                }
+
+                var colorName = knownName;
+
+                if (systemEnvironmentColors.Contains(colorName)) {
+                    systemName = colorName;
+                }
+                else {
+                    return colorName;
                 }
             }
-            return SystemName;
+            return systemName;
         }
 
 
@@ -137,46 +107,21 @@ namespace ElfControls {
         ///     Generates a list of all the names of the System.Drawing.SystemColor members.
         /// </summary>
         /// <returns>List of SystemColor color names.</returns>
-        private List<string> GetSystemColorNames() {
-            var SystemEnvironmentColors = new List<string>();
-            foreach (MemberInfo member in (typeof (SystemColors)).GetProperties()) {
-                SystemEnvironmentColors.Add(member.Name);
+        private static List<string> GetSystemColorNames() {
+            var systemEnvironmentColors = new List<string>();
+            foreach (var member in (typeof (SystemColors)).GetProperties()) {
+                systemEnvironmentColors.Add(member.Name);
             }
-            return SystemEnvironmentColors;
+            return systemEnvironmentColors;
         }
 
 
         /// <summary>
         ///     Convert the hex data into RGB data.
         /// </summary>
-        /// <param name="hex_data">Hex string to parse</param>
-        private Color ParseHexData(string hex_data) {
-            if (hex_data.Length != 6) {
-                return Color.Black;
-            }
-
-            string r_text, g_text, b_text;
-            int r, g, b;
-
-            r_text = hex_data.Substring(0, 2);
-            g_text = hex_data.Substring(2, 2);
-            b_text = hex_data.Substring(4, 2);
-
-            r = int.Parse(r_text, NumberStyles.HexNumber);
-            g = int.Parse(g_text, NumberStyles.HexNumber);
-            b = int.Parse(b_text, NumberStyles.HexNumber);
-
-            return Color.FromArgb(r, g, b);
-        }
-
-
-        private int Round(double val) {
-            var ret_val = (int) val;
-            var temp = (int) (val * 100);
-            if ((temp % 100) >= 50) {
-                ret_val += 1;
-            }
-            return ret_val;
+        /// <param name="hexData">Hex string to parse</param>
+        private static Color ParseHexData(string hexData) {
+            return hexData.Length == 6 ? Color.FromArgb(int.Parse(hexData, NumberStyles.HexNumber)) : Color.Black;
         }
 
 
@@ -185,51 +130,36 @@ namespace ElfControls {
         /// </summary>
         /// <param name="color">Color data to parse and display</param>
         private void UpdateUI(Color color) {
-            _isUpdating = true;
+            _isInternalUpdate = true;
             _color = color;
             _hsl = ColorManager.RGB_to_HSL(_color);
-            _cmyk = ColorManager.RGB_to_CMYK(_color);
+            ColorManager.RGB_to_CMYK(_color);
 
             if (!_colorEvent) {
                 colorWheel1.Color = _color;
             }
 
-            txtHue.Text = Round(colorWheel1.Hue * 360).ToString();
-            txtSat.Text = Round(colorWheel1.Saturation * 100).ToString();
-            txtLuminance.Text = Round(colorWheel1.Luminance * 100).ToString();
+            txtHue.Text = Math.Round(colorWheel1.Hue * 360f, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture);
+            txtSat.Text = Math.Round(colorWheel1.Saturation * 100f, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture);
+            txtLuminance.Text = Math.Round(colorWheel1.Luminance * 100f, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture);
 
-            txtRed.Text = colorWheel1.Red.ToString();
-            txtGreen.Text = colorWheel1.Green.ToString();
-            txtBlue.Text = colorWheel1.Blue.ToString();
+            txtRed.Text = colorWheel1.Red.ToString(CultureInfo.InvariantCulture);
+            txtGreen.Text = colorWheel1.Green.ToString(CultureInfo.InvariantCulture);
+            txtBlue.Text = colorWheel1.Blue.ToString(CultureInfo.InvariantCulture);
 
             pnlPendingColor.Color = _color;
             pnlPendingColor.Update();
 
             WriteHexData(_color);
 
-            if (_showKnownNames) {
-                txtName.Text = GetKnownColorName(_color);
-            }
+            txtName.Text = GetKnownColorName(_color);
 
-            _isUpdating = false;
+            _isInternalUpdate = false;
         }
 
 
         private void WriteHexData(Color rgb) {
-            string red = Convert.ToString(rgb.R, 16);
-            if (red.Length < 2) {
-                red = "0" + red;
-            }
-            string green = Convert.ToString(rgb.G, 16);
-            if (green.Length < 2) {
-                green = "0" + green;
-            }
-            string blue = Convert.ToString(rgb.B, 16);
-            if (blue.Length < 2) {
-                blue = "0" + blue;
-            }
-
-            txtHex.Text = "#" + red.ToLower() + green.ToLower() + blue.ToLower();
+            txtHex.Text = @"#" + (rgb.R.ToString("X2") + rgb.G.ToString("X2") + rgb.B.ToString("X2")).ToLower();
         }
 
         #endregion [ Methods ]
@@ -245,32 +175,19 @@ namespace ElfControls {
 
 
         /// <summary>
-        ///     Only allow the character 0 through 9 in this textbox.
-        /// </summary>
-        private void SignedNumberOnly_KeyPress(object sender, KeyPressEventArgs e) {
-            if ((e.KeyChar != '\b') & (e.KeyChar != '-')) {
-                e.Handled = ((!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)));
-            }
-        }
-
-
-        /// <summary>
         ///     Only allow the character 0 through 9, A through F and the # sign in this textbox.
         /// </summary>
         private void HexOnly_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar != '\b') {
-                if (Uri.IsHexDigit(e.KeyChar) || (e.KeyChar == '#')) {
-                    e.Handled = false; // We like these, do nothing
-                }
-                else {
-                    e.Handled = true;
-                }
+            if (e.KeyChar == '\b') {
+                return;
             }
+
+            e.Handled = !(Uri.IsHexDigit(e.KeyChar) || (e.KeyChar == '#'));
         }
 
 
         private void colorWheel1_ColorChanged(object sender, EventArgs e) {
-            if (_isUpdating) {
+            if (_isInternalUpdate) {
                 return;
             }
 
@@ -280,25 +197,15 @@ namespace ElfControls {
         }
 
 
-        private void lblOriginalColor_Click(object sender, EventArgs e) {
-            Color = lblOriginalColor.BackColor;
-        }
-
-
-        private void TextBox_Click(object sender, EventArgs e) {
-            ((TextBox) sender).SelectAll();
-        }
-
-
         private void txtHex_Leave(object sender, EventArgs e) {
-            string Hex = txtHex.Text.Replace("#", string.Empty);
-            if (Hex.Length > 6) {
+            var hex = txtHex.Text.Replace("#", string.Empty);
+            if (hex.Length > 6) {
                 WriteHexData(_color);
                 txtHex.SelectAll();
                 txtHex.Focus();
                 return;
             }
-            UpdateUI(ParseHexData(Hex));
+            UpdateUI(ParseHexData(hex));
         }
 
 
@@ -308,12 +215,12 @@ namespace ElfControls {
                 return;
             }
 
-            int Hue = int.Parse(txtHue.Text) % 360;
-            if (Hue < 0) {
-                Hue += 360;
+            var hue = int.Parse(txtHue.Text) % 360;
+            if (hue < 0) {
+                hue += 360;
             }
 
-            _hsl.Hue = Hue / 360.0;
+            _hsl.Hue = hue / 360.0;
             colorWheel1.Hue = _hsl.H;
             UpdateUI(ColorManager.HSL_to_RGB(_hsl));
         }
@@ -325,8 +232,8 @@ namespace ElfControls {
                 return;
             }
 
-            int Saturation = int.Parse(txtSat.Text);
-            _hsl.Saturation = (double) Saturation / 100;
+            var saturation = int.Parse(txtSat.Text);
+            _hsl.Saturation = (double) saturation / 100;
             UpdateUI(ColorManager.HSL_to_RGB(_hsl));
         }
 
@@ -337,8 +244,8 @@ namespace ElfControls {
                 return;
             }
 
-            int Luminance = int.Parse(txtLuminance.Text);
-            _hsl.Luminance = (double) Luminance / 100;
+            var luminance = int.Parse(txtLuminance.Text);
+            _hsl.Luminance = (double) luminance / 100;
             UpdateUI(ColorManager.HSL_to_RGB(_hsl));
         }
 
@@ -349,11 +256,11 @@ namespace ElfControls {
                 return;
             }
 
-            int Red = int.Parse(txtRed.Text);
-            if (Red > 255) {
-                Red = 255;
+            var red = int.Parse(txtRed.Text);
+            if (red > 255) {
+                red = 255;
             }
-            colorWheel1.Red = (byte) Red;
+            colorWheel1.Red = (byte) red;
             UpdateUI(colorWheel1.Color);
         }
 
@@ -364,11 +271,11 @@ namespace ElfControls {
                 return;
             }
 
-            int Green = int.Parse(txtGreen.Text);
-            if (Green > 255) {
-                Green = 255;
+            var green = int.Parse(txtGreen.Text);
+            if (green > 255) {
+                green = 255;
             }
-            colorWheel1.Green = (byte) Green;
+            colorWheel1.Green = (byte) green;
             UpdateUI(colorWheel1.Color);
         }
 
@@ -379,11 +286,11 @@ namespace ElfControls {
                 return;
             }
 
-            int Blue = int.Parse(txtBlue.Text);
-            if (Blue > 255) {
-                Blue = 255;
+            var blue = int.Parse(txtBlue.Text);
+            if (blue > 255) {
+                blue = 255;
             }
-            colorWheel1.Blue = (byte) Blue;
+            colorWheel1.Blue = (byte) blue;
             UpdateUI(colorWheel1.Color);
         }
 
@@ -395,43 +302,48 @@ namespace ElfControls {
         ///     the textbox to the max value.
         /// </summary>
         private void ValueRangeCheck_TextChanged(object sender, EventArgs e) {
-            if (_isUpdating) {
+            if (_isInternalUpdate) {
                 return;
             }
 
             var tb = (TextBox) sender;
-            string MaxString = tb.Tag as string ?? string.Empty;
-            if (MaxString.Length == 0) {
-                return;
-            }
-            string Value = tb.Text;
-            if (Value.Length == 0) {
+            var maxString = tb.Tag as string ?? string.Empty;
+            if (maxString.Length == 0) {
                 return;
             }
 
-            int MaxVal = 0;
-            int TBVal = 0;
-            if (!Int32.TryParse(MaxString, out MaxVal)) {
+            var value = tb.Text;
+            if (value.Length == 0) {
+                return;
+            }
+
+            int maxVal;
+            if (!Int32.TryParse(maxString, out maxVal)) {
                 throw new ArgumentOutOfRangeException("Tag for " + tb.Name + " has not been properly set.");
             }
-            if (!Int32.TryParse(Value, out TBVal)) {
-                tb.Text = "0";
+
+            int tbVal;
+            if (!Int32.TryParse(value, out tbVal)) {
+                tb.Text = @"0";
                 tb.SelectAll();
                 tb.Focus();
                 return;
             }
 
-            if ((TBVal < 0) & (tb != txtHue)) {
-                tb.Text = "0";
+            if ((tbVal < 0) & (tb != txtHue)) {
+                tb.Text = @"0";
                 tb.SelectAll();
                 tb.Focus();
                 return;
             }
-            if (TBVal > MaxVal) {
-                tb.Text = MaxString;
-                tb.SelectAll();
-                tb.Focus();
+
+            if (tbVal <= maxVal) {
+                return;
             }
+
+            tb.Text = maxString;
+            tb.SelectAll();
+            tb.Focus();
         }
     }
 }
