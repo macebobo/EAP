@@ -303,7 +303,7 @@ namespace ElfCore.Forms
 
 			if (!_background.LoadFromFile(OpenImageFileDialog.FileName))
 			{
-				MessageBox.Show("Invalid Image File", "Load Image", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Invalid Image File", @"Load Image", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 

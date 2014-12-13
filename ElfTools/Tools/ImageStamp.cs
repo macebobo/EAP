@@ -636,7 +636,7 @@ namespace ElfTools.Tools {
 
             var Stamp = new Bitmap(Filename);
             if ((Stamp.Width > 100) || (Stamp.Height > 100)) {
-                MessageBox.Show("Custom Image stamp file cannot be larger than 100x100 pixels.", "Load Custom Image Stamp", MessageBoxButtons.OK,
+                MessageBox.Show("Custom Image stamp file cannot be larger than 100x100 pixels.", @"Load Custom Image Stamp", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 _loading = false;
                 return;

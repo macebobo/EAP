@@ -758,7 +758,7 @@ namespace ElfCore.Profiles
 				Message = string.Format("Save changes to \"{0}\" before closing?", Name);
 
 			if (Dirty && !SuppressEvents)
-				Result = MessageBox.Show(Message, "Close Profile", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+				Result = MessageBox.Show(Message, @"Close Profile", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
 			if (Result == DialogResult.Cancel)
 			{
@@ -1357,7 +1357,7 @@ namespace ElfCore.Profiles
 				Message = string.Format("Save changes to \"{0}\" before closing?", Name);
 
 			if (Dirty && !SuppressEvents)
-				Result = MessageBox.Show(Message, "Close Profile", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+				Result = MessageBox.Show(Message, @"Close Profile", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
 			if (Result == DialogResult.Cancel)
 			{

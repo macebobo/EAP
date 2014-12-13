@@ -660,11 +660,11 @@ namespace ElfCore.Controllers
 			}
 			catch
 			{
-				MessageBox.Show("Unable to save this file, possibly due to where it is being saved.", "Save Image", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				MessageBox.Show("Unable to save this file, possibly due to where it is being saved.", @"Save Image", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return string.Empty;
 			}
 
-			MessageBox.Show("File saved.", "Save Image", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show("File saved.", @"Save Image", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			return filename;
 		}
 

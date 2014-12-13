@@ -1168,7 +1168,7 @@ namespace ElfTools {
         protected virtual void cmdShowMarquee_Click(object sender, EventArgs e) {
             if (!cmdShowMarquee.Checked && !cmdShowOverlay.Checked) {
                 MessageBox.Show("Either the Mask Marquee or the Mask Overlay must be check, else you would never see the masked area.",
-                    "Hide Mask Marquee", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    @"Hide Mask Marquee", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 cmdShowMarquee.Checked = true;
                 return;
             }
@@ -1183,7 +1183,7 @@ namespace ElfTools {
         protected virtual void cmdShowOverlay_Click(object sender, EventArgs e) {
             if (!cmdShowMarquee.Checked && !cmdShowOverlay.Checked) {
                 MessageBox.Show("Either the Mask Marquee or the Mask Overlay must be check, else you would never see the masked area.",
-                    "Hide Mask Overlay", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    @"Hide Mask Overlay", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 cmdShowOverlay.Checked = true;
                 return;
             }

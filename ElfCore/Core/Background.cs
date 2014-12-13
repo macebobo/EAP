@@ -820,7 +820,7 @@ namespace ElfCore.Core
 			_image = ImageHandler.LoadBitmapFromFile(filename);
 			if (_image == null)
 			{
-				MessageBox.Show("Unable to load this file.", "Load Image File", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show("Unable to load this file.", @"Load Image File", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return false;
 			}
 

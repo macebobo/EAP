@@ -37,7 +37,7 @@ namespace ElfPreview {
         /// </summary>
         [UsedImplicitly]
         public string Author {
-            get { return "Rob Anderson"; }
+            get { return "Original by Rob Anderson"; }
         }
 
         /// <summary>
@@ -192,11 +192,6 @@ namespace ElfPreview {
 
         public bool SupportsLiveSetup() {
             return false;
-        }
-
-
-        public bool SettingsValid() {
-            return true;
         }
 
 

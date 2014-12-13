@@ -401,7 +401,7 @@ namespace ElfCore.Forms
 			Result = MessageBox.Show("Setting an image of the current Channel as the background Image." + Environment.NewLine +
 									 "Would you like to change the color of the Channel to another color before creating the image?" + Environment.NewLine +
 									 "This will be for the image only and will not affect the actual Channel.",
-									 "Set Channel As Background Image",
+									 @"Set Channel As Background Image",
 									 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
 			if (Result == DialogResult.Cancel)
