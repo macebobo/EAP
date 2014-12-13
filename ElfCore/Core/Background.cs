@@ -10,6 +10,8 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
+using ElfCore.XmlSerializers;
+
 namespace ElfCore.Core
 {
 	/// <summary>

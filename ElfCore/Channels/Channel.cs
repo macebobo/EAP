@@ -11,6 +11,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Xml.Serialization;
+
+using ElfCore.XmlSerializers;
+
 using LatticePoint = System.Drawing.Point;
 
 namespace ElfCore.Channels

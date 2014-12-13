@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Xml.Serialization;
 
-namespace ElfCore.Util
+namespace ElfCore.XmlSerializers
 {
 	/// <summary>
 	/// http://stackoverflow.com/questions/3280362/most-elegant-xml-serialization-of-color-structure

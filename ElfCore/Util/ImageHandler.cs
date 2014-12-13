@@ -10,6 +10,9 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+
+using ElfCore.XmlSerializers;
+
 using ElfRes = ElfCore.Properties.Resources;
 
 namespace ElfCore.Util
