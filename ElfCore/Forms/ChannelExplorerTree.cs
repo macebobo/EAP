@@ -57,7 +57,7 @@ namespace ElfCore.Forms
 		/// <summary>
 		/// Gets the Active Profile
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		private BaseProfile Profile
 		{
 			get { return _workshop.Profile; }
@@ -741,13 +741,13 @@ namespace ElfCore.Forms
 
 				switch (e.PropertyName)
 				{
-					case Channel.Property_RenderColor:
-					case Channel.Property_SequencerColor:
-					case Channel.Property_BorderColor:
-					case Channel.Property_Locked:
-					case Channel.Property_Included:
-					case Channel.Property_Enabled:
-					case Channel.Property_Visible:
+					case Channel.PropertyRenderColor:
+					case Channel.PropertySequencerColor:
+					case Channel.PropertyBorderColor:
+					case Channel.PropertyLocked:
+					case Channel.PropertyIncluded:
+					case Channel.PropertyEnabled:
+					case Channel.PropertyVisible:
 						AddColorSwatchIcon(ChannelNode);
 						UpdateChannelIcon(ChannelNode);
 
@@ -765,7 +765,7 @@ namespace ElfCore.Forms
 
 						break;
 
-					case Channel.Property_Name:
+					case Channel.PropertyName:
 						ChannelNode.Text = Channel.ToString(true);
 						break;
 

@@ -73,7 +73,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Shortcut to the Active Profile
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public BaseProfile ActiveProfile
 		{
 			get { return _workshop.ProfileController.Active; }

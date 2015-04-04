@@ -107,7 +107,7 @@ namespace ElfCore.Forms
 		/// <summary>
 		/// Internal property to get the Active Profile.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		private BaseProfile Profile
 		{
 			get { return _workshop.Profile; }

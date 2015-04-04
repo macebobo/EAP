@@ -59,7 +59,7 @@ namespace ElfCore.Profiles
 		/// <summary>
 		/// Returns the number of Channels in this Profile.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int ChannelCount
 		{
 			get { return _channelController.Count; }
@@ -162,7 +162,7 @@ namespace ElfCore.Profiles
 		/// <summary>
 		/// Image file that represents the Icon of the sequencing program used by this type of Profile.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Bitmap IconImage
 		{
 			get { return _profileDataLayer.IconImage; }
@@ -222,7 +222,7 @@ namespace ElfCore.Profiles
 		/// <summary>
 		/// Scaling data, including Cell Size, Canvas Size, etc.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Scaling Scaling
 		{
 			get { return _scaling; }
@@ -245,14 +245,14 @@ namespace ElfCore.Profiles
 		/// <summary>
 		/// Used the the edit background form.
 		/// </summary>
-		[XmlIgnore(), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		[XmlIgnore, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public PictureBox SubstituteCanvas
 		{
 			get { return _substituteCanvas; }
 			set { _substituteCanvas = value; }
 		}
 
-		[XmlIgnore()]
+		[XmlIgnore]
 		internal IProfile ProfileDataLayer
 		{
 			get { return _profileDataLayer; }

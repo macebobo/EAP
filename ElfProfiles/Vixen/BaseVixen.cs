@@ -350,10 +350,10 @@ namespace ElfProfiles.Vixen {
 
                 Channel.Locked = _xmlHelper.GetAttributeValue(ChannelNode, Attribute_Locked, false);
                 Channel.Visible = _xmlHelper.GetAttributeValue(ChannelNode, Attribute_Visible, true);
-                Channel.RenderColor = _xmlHelper.GetNodeValue(ChannelNode, ElfCore.Channels.Channel.Property_RenderColor, Color.Empty);
-                Channel.BorderColor = _xmlHelper.GetNodeValue(ChannelNode, ElfCore.Channels.Channel.Property_BorderColor, Color.Empty);
+                Channel.RenderColor = _xmlHelper.GetNodeValue(ChannelNode, ElfCore.Channels.Channel.PropertyRenderColor, Color.Empty);
+                Channel.BorderColor = _xmlHelper.GetNodeValue(ChannelNode, ElfCore.Channels.Channel.PropertyBorderColor, Color.Empty);
 
-                Node = ChannelNode.SelectSingleNode(ElfCore.Channels.Channel.Property_Origin);
+                Node = ChannelNode.SelectSingleNode(ElfCore.Channels.Channel.PropertyOrigin);
                 if (Node != null) {
                     Channel.Origin = new Point(_xmlHelper.GetAttributeValue(Node, Attribute_Point_X, 0),
                         _xmlHelper.GetAttributeValue(Node, Attribute_Point_Y, 0));
@@ -407,7 +407,7 @@ namespace ElfProfiles.Vixen {
             Value = _xmlHelper.GetAttributeValue(node, Attribute_Output, "0");
             Channel.ID = Convert.ToInt32(Value);
 
-            Value = _xmlHelper.GetAttributeValue(node, ElfCore.Channels.Channel.Property_Enabled.ToLower());
+            Value = _xmlHelper.GetAttributeValue(node, ElfCore.Channels.Channel.PropertyEnabled.ToLower());
             Channel.Enabled = Convert.ToBoolean(Value);
 
             // Channel.Name loaded from one of the derived classes.
@@ -600,17 +600,17 @@ namespace ElfProfiles.Vixen {
                 }
 
                 if (!Channel.Origin.IsEmpty) {
-                    OriginNode = _xmlHelper.CreateNode(Doc, Node, ElfCore.Channels.Channel.Property_Origin);
+                    OriginNode = _xmlHelper.CreateNode(Doc, Node, ElfCore.Channels.Channel.PropertyOrigin);
                     _xmlHelper.SetAttribute(OriginNode, Attribute_Point_X, Channel.Origin.X);
                     _xmlHelper.SetAttribute(OriginNode, Attribute_Point_Y, Channel.Origin.X);
                 }
 
                 if (!Channel.RenderColor.IsEmpty && !Channel.RenderColor.Equals(Channel.SequencerColor)) {
-                    _xmlHelper.SetValue(Node, ElfCore.Channels.Channel.Property_RenderColor, Channel.RenderColor);
+                    _xmlHelper.SetValue(Node, ElfCore.Channels.Channel.PropertyRenderColor, Channel.RenderColor);
                 }
 
                 if (!Channel.BorderColor.IsEmpty) {
-                    _xmlHelper.SetValue(Node, ElfCore.Channels.Channel.Property_BorderColor, Channel.BorderColor);
+                    _xmlHelper.SetValue(Node, ElfCore.Channels.Channel.PropertyBorderColor, Channel.BorderColor);
                 }
 
                 if (Channel.EncodedRasterData.Length > 0) {

@@ -1,4 +1,6 @@
-﻿using ElfCore.Channels;
+﻿using System.Linq;
+
+using ElfCore.Channels;
 using ElfCore.Core;
 using ElfCore.Profiles;
 using ElfCore.Util;
@@ -45,7 +47,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// The Channel currently selected. If there are multiple Channels selected, then the Active Channel is the topmost of these selected Channels
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Channel Active
 		{
 			get
@@ -72,7 +74,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Indicate whether all of the selected channels are eligible for inclusion for this PlugIn
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public bool CanInclude
 		{
 			get
@@ -98,7 +100,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Indicate whether all of the selected channels are eligible for exclusion for this PlugIn
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public bool CanExclude
 		{
 			get
@@ -126,7 +128,7 @@ namespace ElfCore.Controllers
 		/// 1 channel, at index [channel count -1], or if there are multiple channels and all of them occupy the bottom indices (ie cannot move one
 		/// channel into another's index. 
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public bool CanMoveDown
 		{
 			get
@@ -159,7 +161,7 @@ namespace ElfCore.Controllers
 		/// 1 channel, at index 0, or if there are multiple channels and all of them occupy the top indices (ie cannot move one
 		/// channel into another's index. 
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public bool CanMoveUp
 		{
 			get
@@ -189,8 +191,8 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Returns the count of all the Channels
 		/// </summary>
-		[DebuggerHidden()]
-		[XmlIgnore()]
+		[DebuggerHidden]
+		[XmlIgnore]
 		public int Count
 		{
 			get { return _channels.Count; }
@@ -199,7 +201,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Controller of the Channel Groups
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public ChannelGroupController Groups
 		{
 			get { return _groupController; }
@@ -218,7 +220,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Returns the largest ID in the list.
 		/// </summary>
-		[XmlIgnore(), Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DebuggerHidden()]
+		[XmlIgnore, Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DebuggerHidden]
 		public int MaxID
 		{
 			get
@@ -233,7 +235,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Returns the smallest ID in the list.
 		/// </summary>
-		[XmlIgnore(), Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DebuggerHidden()]
+		[XmlIgnore, Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DebuggerHidden]
 		public int MinID
 		{
 			get
@@ -248,7 +250,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Returns "Channel" if there is only 1 channel, "Channels" if there are 0, or more than 1.
 		/// </summary>
-		[XmlIgnore(), Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DebuggerHidden()]
+		[XmlIgnore, Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DebuggerHidden]
 		public string PluralText
 		{
 			get
@@ -263,7 +265,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Retrieves the list of Channels in their selected Shuffle
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public ChannelList Sorted
 		{
 			get
@@ -277,7 +279,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Returns the ShuffleController
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public ShuffleController ShuffleController
 		{
 			get { return _shuffleController; }
@@ -286,7 +288,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// List of all Channels that are selected
 		/// </summary>
-		[XmlIgnore(), DebuggerHidden()]
+		[XmlIgnore, DebuggerHidden]
 		public ChannelList Selected
 		{
 			get
@@ -313,7 +315,7 @@ namespace ElfCore.Controllers
 		/// Overloaded index operator
 		/// </summary>
 		/// <param name="index">Index of the array to use.</param>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public Channel this[int index]
 		{
 			get
@@ -327,7 +329,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// List of all Channels that are not selected.
 		/// </summary>
-		[XmlIgnore(), DebuggerHidden()]
+		[XmlIgnore, DebuggerHidden]
 		public ChannelList Unselected
 		{
 			get 
@@ -539,10 +541,8 @@ namespace ElfCore.Controllers
 
 			// Resequence the channels from the deleted channel's ID onward
 			//foreach (RasterChannel Channel in _channels.Where(c => c.ID > ID).OrderBy(c => c.ID).ToList())
-			foreach (Channel Channel in _channels.OrderByAscending())
-			{
-				if (Channel.ID > ID)
-					Channel.ID--;
+			foreach (var Channel in _channels.OrderBy(c => c.ID).Where(Channel => Channel.ID > ID)) {
+			    Channel.ID--;
 			}
 
 			OnChannelRemoved(channel);
@@ -1051,7 +1051,7 @@ namespace ElfCore.Controllers
 				c.RenderColor = color;
 			SuppressChannelEvents(collection, false);
 
-			OnPropertyChanged(collection, Channel.Property_RenderColor);
+			OnPropertyChanged(collection, Channel.PropertyRenderColor);
 		}
 
 		/// <summary>
@@ -1070,7 +1070,7 @@ namespace ElfCore.Controllers
 				c.SequencerColor = color;
 			SuppressChannelEvents(collection, false);
 
-			OnPropertyChanged(collection, Channel.Property_SequencerColor);
+			OnPropertyChanged(collection, Channel.PropertySequencerColor);
 		}
 
 		/// <summary>
@@ -1089,7 +1089,7 @@ namespace ElfCore.Controllers
 				c.BorderColor = color;
 			SuppressChannelEvents(collection, false);
 
-			OnPropertyChanged(collection, Channel.Property_BorderColor);
+			OnPropertyChanged(collection, Channel.PropertyBorderColor);
 		}
 
 		/// <summary>
@@ -1108,7 +1108,7 @@ namespace ElfCore.Controllers
 				c.Visible = visible;
 			SuppressChannelEvents(collection, false);
 
-			OnPropertyChanged(collection, Channel.Property_Visible);
+			OnPropertyChanged(collection, Channel.PropertyVisible);
 		}
 
 		/// <summary>
@@ -1402,7 +1402,7 @@ namespace ElfCore.Controllers
 		/// <param name="e">PropertyChangedEventArgs, containing the name of the property changed.</param>
 		private void Channel_PropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
-			if (e.PropertyName != Channel.Property_Selected)
+			if (e.PropertyName != Channel.PropertySelected)
 				OnPropertyChanged(sender, e.PropertyName);
 			else
 				OnChannelsSelected((Channel)sender);

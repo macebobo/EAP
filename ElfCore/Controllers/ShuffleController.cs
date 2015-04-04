@@ -16,8 +16,8 @@ namespace ElfCore.Controllers
 
 		#region [ Private Properties ]
 
-		private ShuffleList _list = null;
-		private Shuffle _active = null;
+		private ShuffleList _list;
+		private Shuffle _active;
 		private XmlHelper _xmlHelper = XmlHelper.Instance;
 
 		#endregion [ Private Properties ]
@@ -27,7 +27,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Returns the list of all the Shuffles
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public ShuffleList All
 		{
 			get { return _list; }
@@ -36,7 +36,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Currently selected Shuffle
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Shuffle Active
 		{
 			get
@@ -65,7 +65,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Index of the active sort order
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public int ActiveIndex
 		{
 			get { return _list.IndexOf(Active); }
@@ -75,7 +75,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Gets the number of elements actually contained in the List.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public int Count
 		{
 			get { return _list.Count; }
@@ -86,7 +86,7 @@ namespace ElfCore.Controllers
 		/// </summary>
 		/// <param name="index">Index of the element</param>
 		/// <returns>Returns the element at position indicated.</returns>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Shuffle this[int index]
 		{
 			get { return _list[index]; }
@@ -370,7 +370,7 @@ namespace ElfCore.Controllers
 		internal ChannelList GetSorted(ChannelList unorderedChannels)
 		{
 			if (unorderedChannels == null)
-				throw new ArgumentNullException("unorderedChannels is null");
+				throw new ArgumentNullException("unorderedChannels");
 
 			ChannelList Sorted = new ChannelList();
 

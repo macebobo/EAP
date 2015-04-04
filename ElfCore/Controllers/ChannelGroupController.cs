@@ -17,13 +17,13 @@ namespace ElfCore.Controllers
 
 		#region [ Private Properties ]
 
-		[XmlIgnore()]
+		[XmlIgnore]
 		private ChannelGroupList _list = null;
 
-		[XmlIgnore()]
+		[XmlIgnore]
 		private ChannelGroup _active = null;
 
-		[XmlIgnore()]
+		[XmlIgnore]
 		private XmlHelper _xmlHelper = XmlHelper.Instance;
 
 		#endregion [ Private Properties ]
@@ -33,7 +33,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Currently selected ChannelGroup
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public ChannelGroup Active
 		{
 			get
@@ -59,7 +59,7 @@ namespace ElfCore.Controllers
 		/// <summary>
 		/// Gets the number of elements actually contained in the List.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public int Count
 		{
 			get { return _list.Count; }

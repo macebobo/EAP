@@ -33,7 +33,7 @@ namespace ElfCore.PlugIn
 		/// <summary>
 		/// Indicates if this ToolGroup has been added to the main ToolBox.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Added { get; set; }
 
 		/// <summary>
@@ -57,19 +57,19 @@ namespace ElfCore.PlugIn
 		/// <summary>
 		/// Unique ID number
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int ID { get; set; }
 
 		/// <summary>
 		/// Index of this object's position within its parent ToolBox.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int Index { get; set; }
 
 		/// <summary>
 		/// Name of the this ToolGroup
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string Name
 		{
 			get { return ToolGroup.Name; }
@@ -78,7 +78,7 @@ namespace ElfCore.PlugIn
 		/// <summary>
 		/// Returns the name of this ToolGroup with whitespace removed.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string SafeName
 		{
 			get { return Regex.Replace(Name, @"[^\w]", "", RegexOptions.None); }
@@ -87,7 +87,7 @@ namespace ElfCore.PlugIn
 		/// <summary>
 		/// Links to the ToolGroup contained herein
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public IToolGroup ToolGroup
 		{
 			get { return _toolGroup; }
@@ -96,7 +96,7 @@ namespace ElfCore.PlugIn
 		/// <summary>
 		/// ToolTipText of this ToolGroup
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string ToolTipText
 		{
 			get { return ToolGroup.ToolTipText; }
@@ -105,7 +105,7 @@ namespace ElfCore.PlugIn
 		/// <summary>
 		/// ToolStrip that this ToolGroup appears on
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public ToolStrip ToolBox
 		{
 			get { return _toolBox; }
@@ -115,7 +115,7 @@ namespace ElfCore.PlugIn
 		/// <summary>
 		/// Image for the button for this ToolGroup. Taken from the ToolGroup's active Tool
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public Bitmap ToolBoxImage
 		{
 			get { return _toolGroup.ToolBoxImage; }

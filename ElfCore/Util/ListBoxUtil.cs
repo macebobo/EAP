@@ -34,7 +34,7 @@ namespace ElfCore.Util
 		protected void Initialize(bool setObjects)
 		{ }
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public ListBoxUtil()
 		{
 			Initialize(true);
@@ -52,21 +52,21 @@ namespace ElfCore.Util
 
 			#region [ Properties ]
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			public string Key
 			{
 				get { return _key; }
 				set { _key = value; }
 			}
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			public string Text
 			{
 				get { return _text; }
 				set { _text = value; }
 			}
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			public object StoredObject
 			{
 				get { return _storage; }
@@ -77,13 +77,13 @@ namespace ElfCore.Util
 
 			#region [ Constructors ]
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			public Item()
 			{
 				Initialize(true);
 			}
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			public Item(string text)
 				: this()
 			{
@@ -91,7 +91,7 @@ namespace ElfCore.Util
 				_text = text;
 			}
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			public Item(string text, string key)
 				: this()
 			{
@@ -99,7 +99,7 @@ namespace ElfCore.Util
 				_text = text;
 			}
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			public Item(string text, int key)
 				: this()
 			{
@@ -107,14 +107,14 @@ namespace ElfCore.Util
 				_text = text;
 			}
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			public Item(string text, string key, object storage)
 				: this(text, key)
 			{
 				_storage = storage;
 			}
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			protected void Initialize(bool setObjects)
 			{
 				_key = string.Empty;
@@ -124,7 +124,7 @@ namespace ElfCore.Util
 
 			#endregion
 
-			[DebuggerHidden()]
+			[DebuggerHidden]
 			public override string ToString()
 			{
 				return _text;
@@ -143,7 +143,7 @@ namespace ElfCore.Util
 		/// <param name="comboBox">Control to search within.</param>
 		/// <param name="value">Key to the item to be selected</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ComboBox comboBox, bool value)
 		{
 			comboBox.SelectedIndex = Find(comboBox, value);
@@ -156,7 +156,7 @@ namespace ElfCore.Util
 		/// <param name="comboBox">Control to search within.</param>
 		/// <param name="value">Key to the item to be selected</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ComboBox comboBox, string value)
 		{
 			comboBox.SelectedIndex = Find(comboBox, value);
@@ -173,7 +173,7 @@ namespace ElfCore.Util
 		/// <param name="useText">Indicates that the Text of the list item should be searched for, not the key.</param>
 		/// <param name="useStringFragment">Indicates that a fuzzy search method should be use, instead of an exact text match.</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ComboBox comboBox, string value, bool useText, bool useStringFragment)
 		{
 			comboBox.SelectedIndex = Find(comboBox, value, useText, useStringFragment);
@@ -186,7 +186,7 @@ namespace ElfCore.Util
 		/// <param name="comboBox">Control to search within.</param>
 		/// <param name="value">Key to the item to be selected</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ComboBox comboBox, int value)
 		{
 			return Set(comboBox, ((long)value));
@@ -198,7 +198,7 @@ namespace ElfCore.Util
 		/// <param name="comboBox">Control to search within.</param>
 		/// <param name="value">Key to the item to be selected</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ComboBox comboBox, long value)
 		{
 			comboBox.SelectedIndex = Find(comboBox, value);
@@ -215,7 +215,7 @@ namespace ElfCore.Util
 		/// <param name="comboBox">Control to search within.</param>
 		/// <param name="value">Key to the item to be selected</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ToolStripComboBox comboBox, bool value)
 		{
 			comboBox.SelectedIndex = Find(comboBox, value);
@@ -228,7 +228,7 @@ namespace ElfCore.Util
 		/// <param name="comboBox">Control to search within.</param>
 		/// <param name="value">Key to the item to be selected</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ToolStripComboBox comboBox, string value)
 		{
 			comboBox.SelectedIndex = Find(comboBox, value);
@@ -245,7 +245,7 @@ namespace ElfCore.Util
 		/// <param name="useText">Indicates that the Text of the list item should be searched for, not the key.</param>
 		/// <param name="useStringFragment">Indicates that a fuzzy search method should be use, instead of an exact text match.</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ToolStripComboBox comboBox, string value, bool useText, bool useStringFragment)
 		{
 			comboBox.SelectedIndex = Find(comboBox, value, useText, useStringFragment);
@@ -258,7 +258,7 @@ namespace ElfCore.Util
 		/// <param name="comboBox">Control to search within.</param>
 		/// <param name="value">Key to the item to be selected</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ToolStripComboBox comboBox, int value)
 		{
 			return Set(comboBox, ((long)value));
@@ -270,7 +270,7 @@ namespace ElfCore.Util
 		/// <param name="comboBox">Control to search within.</param>
 		/// <param name="value">Key to the item to be selected</param>
 		/// <returns>Returns true if the item was found and set to be Selected, otherwise falee.</returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ToolStripComboBox comboBox, long value)
 		{
 			comboBox.SelectedIndex = Find(comboBox, value);
@@ -281,21 +281,21 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ListBox listBox, long value)
 		{
 			listBox.SelectedIndex = Find(listBox, value.ToString());
 			return (listBox.SelectedIndex > -1);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ListBox listBox, string value)
 		{
 			listBox.SelectedIndex = Find(listBox, value);
 			return (listBox.SelectedIndex > -1);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(ListBox listBox, int value)
 		{
 			return Set(listBox, (value.ToString()));
@@ -305,21 +305,21 @@ namespace ElfCore.Util
 
 		#region [ ElfControls.ImageListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal bool Set(ImageListBox listBox, long value)
 		{
 			listBox.SelectedIndex = Find(listBox, value.ToString());
 			return (listBox.SelectedIndex > -1);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal bool Set(ImageListBox listBox, string value)
 		{
 			listBox.SelectedIndex = Find(listBox, value);
 			return (listBox.SelectedIndex > -1);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal bool Set(ImageListBox listBox, int value)
 		{
 			return Set(listBox, (value.ToString()));
@@ -329,21 +329,21 @@ namespace ElfCore.Util
 
 		#region [ ElfControls.ImageDropDown ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal bool Set(ImageDropDown dropDown, long value)
 		{
 			dropDown.SelectedIndex = Find(dropDown, value.ToString());
 			return (dropDown.SelectedIndex > -1);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal bool Set(ImageDropDown dropDown, string value)
 		{
 			dropDown.SelectedIndex = Find(dropDown, value);
 			return (dropDown.SelectedIndex > -1);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal bool Set(ImageDropDown dropDown, int value)
 		{
 			return Set(dropDown, (value.ToString()));
@@ -353,13 +353,13 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.CheckedListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(CheckedListBox checkedListBox, long value)
 		{
 			return Set(checkedListBox, value, true);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(CheckedListBox checkedListBox, long value, bool checkedValue)
 		{
 			if (Find(checkedListBox, value.ToString()) > -1)
@@ -370,7 +370,7 @@ namespace ElfCore.Util
 			return false;
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool Set(CheckedListBox checkedListBox, string value, bool checkedValue)
 		{
 			if (Find(checkedListBox, value) > -1)
@@ -389,7 +389,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ComboBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int Find(ComboBox comboBox, int value)
 		{
 			return Find(comboBox, value.ToString(), false, false);
@@ -440,7 +440,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ToolStripComboBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int Find(ToolStripComboBox comboBox, int value)
 		{
 			return Find(comboBox, value.ToString(), false, false);
@@ -491,7 +491,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int Find(ListBox listBox, string value)
 		{
 			try
@@ -514,7 +514,7 @@ namespace ElfCore.Util
 
 		#region [ ElfControls.ImageListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal int Find(ImageListBox listBox, string value)
 		{
 			try
@@ -537,7 +537,7 @@ namespace ElfCore.Util
 
 		#region [ ElfControls.ImageDropDown ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal int Find(ImageDropDown dropDown, string value)
 		{
 			try
@@ -560,7 +560,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ListView ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int Find(ListView listView, string value)
 		{
 			try
@@ -583,7 +583,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.CheckedListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int Find(CheckedListBox listBox, string value)
 		{
 			try
@@ -610,7 +610,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ComboBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Initialize(ComboBox comboBox, bool clear, bool loadNotSelectedEntry)
 		{
 			if (loadNotSelectedEntry)
@@ -619,20 +619,20 @@ namespace ElfCore.Util
 				ClearList(comboBox, clear);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void ClearList(ComboBox comboBox)
 		{
 			comboBox.Items.Clear();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		private void ClearList(ComboBox comboBox, bool clear)
 		{
 			if (clear)
 				ClearList(comboBox);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void LoadNotSelected(ComboBox comboBox, bool clear, string desc, long index)
 		{
 			ClearList(comboBox, clear);
@@ -643,7 +643,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ComboBox comboBox, List<Item> list)
 		{
 			Initialize(comboBox, true, false);
@@ -654,13 +654,13 @@ namespace ElfCore.Util
 			SetDropDownWidth(comboBox);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ComboBox comboBox, string[] list)
 		{
 			Load(comboBox, list, true, false, string.Empty);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ComboBox comboBox, string[] list, bool clear,
 						 bool loadNotSelectedEntry, string formatString)
 		{
@@ -680,7 +680,7 @@ namespace ElfCore.Util
 		/// <param name="comboBox">Control to populate</param>
 		/// <param name="list">Generic list of entries to populate the control</param>
 		/// <param name="loadNotSelectedEntry">Load an entry for not selected?</param>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ComboBox comboBox, List<string> list, bool loadNotSelectedEntry)
 		{
 			int Width = comboBox.Width;
@@ -693,7 +693,7 @@ namespace ElfCore.Util
 			SetDropDownWidth(comboBox);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void SetDropDownWidth(ComboBox comboBox)
 		{
 			//Found snippet on http://weblogs.asp.net/eporter/archive/2004/09/27/234773.aspx
@@ -772,20 +772,20 @@ namespace ElfCore.Util
 			senderComboBox.DropDownWidth = width;
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ComboBox comboBox, string text, string key, bool clear, string formatString)
 		{
 			Initialize(comboBox, clear, false);
 			Add(comboBox, text, key, formatString);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void LoadYesNo(ComboBox comboBox)
 		{
 			LoadYesNo(comboBox, true, false);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void LoadYesNo(ComboBox comboBox, bool clear, bool loadNotSelectedEntry)
 		{
 			Initialize(comboBox, clear, loadNotSelectedEntry);
@@ -794,7 +794,7 @@ namespace ElfCore.Util
 			SetDropDownWidth(comboBox);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ComboBox comboBox, string text, string key, bool clear, bool loadNotSelectedEntry, string formatString)
 		{
 			Initialize(comboBox, clear, loadNotSelectedEntry);
@@ -806,7 +806,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ToolStripComboBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Initialize(ToolStripComboBox ComboBox, bool clear, bool loadNotSelectedEntry)
 		{
 			if (loadNotSelectedEntry)
@@ -815,20 +815,20 @@ namespace ElfCore.Util
 				ClearList(ComboBox, clear);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void ClearList(ToolStripComboBox ComboBox)
 		{
 			ComboBox.Items.Clear();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		private void ClearList(ToolStripComboBox ComboBox, bool clear)
 		{
 			if (clear)
 				ClearList(ComboBox);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void LoadNotSelected(ToolStripComboBox ComboBox, bool clear, string desc, long index)
 		{
 			ClearList(ComboBox, clear);
@@ -839,7 +839,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ToolStripComboBox ComboBox, List<Item> list)
 		{
 			Initialize(ComboBox, true, false);
@@ -850,13 +850,13 @@ namespace ElfCore.Util
 			SetDropDownWidth(ComboBox);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ToolStripComboBox ComboBox, string[] list)
 		{
 			Load(ComboBox, list, true, false, string.Empty);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ToolStripComboBox ComboBox, string[] list, bool clear,
 						 bool loadNotSelectedEntry, string formatString)
 		{
@@ -875,7 +875,7 @@ namespace ElfCore.Util
 		/// <param name="ComboBox">Control to populate</param>
 		/// <param name="list">Generic list of entries to populate the control</param>
 		/// <param name="loadNotSelectedEntry">Load an entry for not selected?</param>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ToolStripComboBox ComboBox, List<string> list, bool loadNotSelectedEntry)
 		{
 			int Width = ComboBox.Width;
@@ -888,7 +888,7 @@ namespace ElfCore.Util
 			SetDropDownWidth(ComboBox);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public static void SetDropDownWidth(ToolStripComboBox comboBox)
 		{
 			//Found snippet on http://weblogs.asp.net/eporter/archive/2004/09/27/234773.aspx
@@ -959,20 +959,20 @@ namespace ElfCore.Util
 			ComboBox.DropDownWidth = width;
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ToolStripComboBox ComboBox, string text, string key, bool clear, string formatString)
 		{
 			Initialize(ComboBox, clear, false);
 			Add(ComboBox, text, key, formatString);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void LoadYesNo(ToolStripComboBox ToolStripComboBox)
 		{
 			LoadYesNo(ToolStripComboBox, true, false);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void LoadYesNo(ToolStripComboBox ComboBox, bool clear, bool loadNotSelectedEntry)
 		{
 			Initialize(ComboBox, clear, loadNotSelectedEntry);
@@ -981,7 +981,7 @@ namespace ElfCore.Util
 			//SetDropDownWidth(ComboBox);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ToolStripComboBox ComboBox, string text, string key, bool clear, bool loadNotSelectedEntry, string formatString)
 		{
 			Initialize(ComboBox, clear, loadNotSelectedEntry);
@@ -997,7 +997,7 @@ namespace ElfCore.Util
 		/// Clears the listbox
 		/// </summary>
 		/// <param name="listBox"></param>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void ClearList(ListBox listBox)
 		{
 			listBox.Items.Clear();
@@ -1008,7 +1008,7 @@ namespace ElfCore.Util
 		/// </summary>
 		/// <param name="listBox"></param>
 		/// <param name="clear"></param>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void ClearList(ListBox listBox, bool clear)
 		{
 			if (clear)
@@ -1020,7 +1020,7 @@ namespace ElfCore.Util
 		/// </summary>
 		/// <param name="listBox"></param>
 		/// <returns></returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool ClearDeleted(ListBox listBox)
 		{
 
@@ -1067,7 +1067,7 @@ namespace ElfCore.Util
 		/// <param name="clear"></param>
 		/// <param name="formatString"></param>
 		/// <param name="isDeleted"></param>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ListBox listBox, string text, string key, bool clear, string formatString)
 		{
 			ClearList(listBox, clear);
@@ -1084,7 +1084,7 @@ namespace ElfCore.Util
 		/// <param name="storage"></param>
 		/// <param name="formatString"></param>
 		/// <param name="isDeleted"></param>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ListBox listBox, string text, string key, object storage, bool clear, string formatString)
 		{
 			ClearList(listBox, clear);
@@ -1098,7 +1098,7 @@ namespace ElfCore.Util
 		/// <param name="list"></param>
 		/// <param name="clear"></param>
 		/// <param name="formatString"></param>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(ListBox listBox, string[] list, bool clear, string formatString)
 		{
 			ClearList(listBox, clear);
@@ -1110,7 +1110,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.CheckedListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void ClearChecked(CheckedListBox listBox)
 		{
 			for (int i = 0; i <= listBox.Items.Count - 1; i++)
@@ -1119,13 +1119,13 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void ClearList(CheckedListBox listBox)
 		{
 			listBox.Items.Clear();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		private void ClearList(CheckedListBox listBox, bool clear)
 		{
 			if (clear)
@@ -1134,14 +1134,14 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(CheckedListBox listBox, string text, string key, bool clear, string formatString)
 		{
 			ClearList(listBox, clear);
 			Add(listBox, text, key, formatString);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Load(CheckedListBox listBox, string[] List, bool clear, string formatString)
 		{
 			ClearList(listBox, clear);
@@ -1161,13 +1161,13 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ComboBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ComboBox comboBox, string text, string key)
 		{
 			Add(comboBox, text, key);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ComboBox comboBox, Item listItem)
 		{
 			comboBox.BeginUpdate();
@@ -1175,7 +1175,7 @@ namespace ElfCore.Util
 			comboBox.EndUpdate();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ComboBox comboBox, string text, string key, string formatString)
 		{
 			comboBox.BeginUpdate();
@@ -1183,7 +1183,7 @@ namespace ElfCore.Util
 			comboBox.EndUpdate();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ComboBox comboBox, string text, string key, object storage)
 		{
 			comboBox.BeginUpdate();
@@ -1202,13 +1202,13 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ToolStripComboBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ToolStripComboBox comboBox, string text, string key)
 		{
 			Add(comboBox, text, key);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ToolStripComboBox comboBox, Item listItem)
 		{
 			comboBox.BeginUpdate();
@@ -1216,7 +1216,7 @@ namespace ElfCore.Util
 			comboBox.EndUpdate();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ToolStripComboBox comboBox, string text, string key, string formatString)
 		{
 			comboBox.BeginUpdate();
@@ -1224,7 +1224,7 @@ namespace ElfCore.Util
 			comboBox.EndUpdate();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ToolStripComboBox comboBox, string text, string key, object storage)
 		{
 			comboBox.BeginUpdate();
@@ -1243,19 +1243,19 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ListBox listBox, string text, string key)
 		{
 			Add(listBox, text, key, string.Empty);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ListBox listBox, string text, string key, string formatString)
 		{
 			Add(listBox, text, key, null, formatString);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(ListBox listBox, string text, string key, object storage, string formatString)
 		{
 			listBox.BeginUpdate();
@@ -1267,7 +1267,7 @@ namespace ElfCore.Util
 
 		#region [ ElfControls.ImageListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal void Add(ImageListBox listBox, string text, string key)
 		{
 			listBox.BeginUpdate();
@@ -1275,7 +1275,7 @@ namespace ElfCore.Util
 			listBox.EndUpdate();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal void Add(ImageListBox listBox, string text, string key, Bitmap image)
 		{
 			listBox.BeginUpdate();
@@ -1283,7 +1283,7 @@ namespace ElfCore.Util
 			listBox.EndUpdate();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal void Add(ImageListBox listBox, string text, string key, Bitmap image, object tag)
 		{
 			listBox.BeginUpdate();
@@ -1295,7 +1295,7 @@ namespace ElfCore.Util
 
 		#region [ ElfControls.ImageDropDown ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal void Add(ImageDropDown dropDown, string text, string key)
 		{
 			dropDown.BeginUpdate();
@@ -1303,7 +1303,7 @@ namespace ElfCore.Util
 			dropDown.EndUpdate();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal void Add(ImageDropDown dropDown, string text, string key, Bitmap image)
 		{
 			dropDown.BeginUpdate();
@@ -1311,7 +1311,7 @@ namespace ElfCore.Util
 			dropDown.EndUpdate();
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		internal void Add(ImageDropDown dropDown, string text, string key, Bitmap image, object tag)
 		{
 			dropDown.BeginUpdate();
@@ -1323,13 +1323,13 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.CheckedListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(CheckedListBox listBox, string text, string key)
 		{
 			Add(listBox, text, key, string.Empty);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void Add(CheckedListBox checkedListBox, string text, string key, string formatString)
 		{
 			checkedListBox.BeginUpdate();
@@ -1348,7 +1348,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ComboBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public Item GetItem(ComboBox comboBox, int index)
 		{
 			try
@@ -1361,7 +1361,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public Item GetItem(ComboBox comboBox)
 		{
 			if (comboBox.SelectedIndex > -1)
@@ -1374,7 +1374,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetKey(ComboBox comboBox, int index)
 		{
 			try
@@ -1387,7 +1387,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetKey(ComboBox comboBox)
 		{
 			if (comboBox.SelectedIndex > -1)
@@ -1400,7 +1400,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetText(ComboBox comboBox, int index)
 		{
 			try
@@ -1413,7 +1413,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetText(ComboBox comboBox)
 		{
 			if (comboBox.SelectedIndex > -1)
@@ -1426,13 +1426,13 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool GetBoolean(ComboBox comboBox)
 		{
 			return GetBoolean(comboBox, comboBox.SelectedIndex);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool GetBoolean(ComboBox comboBox, int index)
 		{
 			if (GetKey(comboBox, index) == "1")
@@ -1449,7 +1449,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.ToolStripComboBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public Item GetItem(ToolStripComboBox comboBox, int index)
 		{
 			try
@@ -1467,7 +1467,7 @@ namespace ElfCore.Util
 		/// </summary>
 		/// <param name="comboBox"></param>
 		/// <returns></returns>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public Item GetItem(ToolStripComboBox comboBox)
 		{
 			if (comboBox.SelectedIndex > -1)
@@ -1480,7 +1480,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetKey(ToolStripComboBox comboBox, int index)
 		{
 			try
@@ -1493,7 +1493,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetKey(ToolStripComboBox comboBox)
 		{
 			if (comboBox.SelectedIndex > -1)
@@ -1506,7 +1506,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetText(ToolStripComboBox comboBox, int index)
 		{
 			try
@@ -1519,7 +1519,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetText(ToolStripComboBox comboBox)
 		{
 			if (comboBox.SelectedIndex > -1)
@@ -1532,13 +1532,13 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool GetBoolean(ToolStripComboBox comboBox)
 		{
 			return GetBoolean(comboBox, comboBox.SelectedIndex);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public bool GetBoolean(ToolStripComboBox comboBox, int index)
 		{
 			if (GetKey(comboBox, index) == "1")
@@ -1781,7 +1781,7 @@ namespace ElfCore.Util
 
 		#region [ Windows.Forms.CheckedListBox ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public Item GetItem(CheckedListBox listBox, int index)
 		{
 			try
@@ -1794,7 +1794,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public Item GetItem(CheckedListBox listBox)
 		{
 			if (listBox.SelectedIndex > -1)
@@ -1807,7 +1807,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetKey(CheckedListBox listBox, int index)
 		{
 			try
@@ -1820,13 +1820,13 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetKey(CheckedListBox listBox)
 		{
 			return GetKey(listBox, listBox.SelectedIndex);
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetText(CheckedListBox listBox, int index)
 		{
 			try
@@ -1839,7 +1839,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public string GetText(CheckedListBox listBox)
 		{
 			return GetText(listBox, listBox.SelectedIndex);
@@ -1851,7 +1851,7 @@ namespace ElfCore.Util
 
 		#region [ Event Overrides ]
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void ComboBox_KeyDown(object sender, KeyEventArgs e)
 		{
 			_resetComboBox = false;
@@ -1862,7 +1862,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void ComboBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (_resetComboBox)
@@ -1873,7 +1873,7 @@ namespace ElfCore.Util
 		}
 
 		// perform the text substitution
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void AutoComplete_KeyDown(object sender, KeyEventArgs e)
 		{
 
@@ -1899,7 +1899,7 @@ namespace ElfCore.Util
 			}
 		}
 
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void AutoComplete_KeyPress(object sender, KeyPressEventArgs e)
 		{
 
@@ -1923,7 +1923,7 @@ namespace ElfCore.Util
 		/// Found at http://rajeshkm.blogspot.com/2006/11/adjust-combobox-drop-down-list-width-c.html
 		/// </summary>
 		/// <param name="sender"></param>		
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public void SetComboScrollWidth(ComboBox comboBox)
 		{
 			int newWidth;

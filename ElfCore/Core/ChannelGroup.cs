@@ -35,7 +35,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Name of the Group.
 		/// </summary>
-		[DebuggerHidden(), XmlAttribute("Name")]
+		[DebuggerHidden, XmlAttribute("Name")]
 		public string Name
 		{
 			get { return _name; }
@@ -52,7 +52,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Color of the Group.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Color Color
 		{
 			get { return _color; }
@@ -80,7 +80,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Returns the count of records in the list.
 		/// </summary>
-		[DebuggerHidden(), XmlIgnore()]
+		[DebuggerHidden, XmlIgnore]
 		public int Count
 		{
 			get { return _list.Count; }
@@ -95,7 +95,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Pre-serialized version of this object.
 		/// </summary>
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore()]
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore]
 		public override string Serialized
 		{
 			get
@@ -127,7 +127,7 @@ namespace ElfCore.Core
 		/// Overloaded index operator
 		/// </summary>
 		/// <param name="index">Index of the array to use.</param>
-		[DebuggerHidden(), XmlIgnore()]
+		[DebuggerHidden, XmlIgnore]
 		public int this[int index]
 		{
 			get { return _list[index]; }
@@ -144,7 +144,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Name of the Group.
 		/// </summary>
-		[DebuggerHidden(), XmlAttribute("Zoom")]
+		[DebuggerHidden, XmlAttribute("Zoom")]
 		public int Zoom
 		{
 			get { return _zoom; }
@@ -343,7 +343,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Occurs when the data in the list is changed in any way
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public EventHandler Changed;
 
 		#endregion [ Event Triggers ]

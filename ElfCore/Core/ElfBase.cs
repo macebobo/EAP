@@ -32,7 +32,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Indicates this data has changed. Is not set if the Workshop.Loading flag is set to true
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public virtual bool Dirty
 		{
 			get { return _dirty; }
@@ -50,7 +50,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Generated Unique identifier for this object.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public string GUID { get; set; }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -64,7 +64,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Pre-serialized version of this object.
 		/// </summary>
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore()]
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore]
 		public virtual string Serialized
 		{
 			get	{ return _serialized; }
@@ -74,7 +74,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Indicates whether events should be suppressed from firing. Use sparingly.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public virtual bool SuppressEvents
 		{
 			get { return _suppressEvents; }
@@ -159,7 +159,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Occurs when the Dirty property changes.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public EventHandlers.DirtyEventHandler DirtyChanged;
 
 		public event PropertyChangedEventHandler PropertyChanged;

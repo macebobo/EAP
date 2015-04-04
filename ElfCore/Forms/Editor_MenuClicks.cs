@@ -417,7 +417,7 @@ namespace ElfCore.Forms
 			}
 
 			Profile.Background.Clear(false);
-			Profile.Background.Image = Profile.Channels.Active.DrawChannel(PaintColor, Color.Black);
+			Profile.Background.Image = Profile.Channels.Active.DrawChannel(PaintColor);
 			Profile.Background.Set();
 			Profile.SaveUndo("Set Channel As Background Image");
 		}

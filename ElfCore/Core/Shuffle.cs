@@ -35,7 +35,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Name of the Shuffle.
 		/// </summary>
-		[DebuggerHidden(), XmlAttribute("name")]
+		[DebuggerHidden, XmlAttribute("name")]
 		public string Name
 		{
 			get { return _name; }
@@ -52,7 +52,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Returns the count of records in the list.
 		/// </summary>
-		[DebuggerHidden(), XmlIgnore()]
+		[DebuggerHidden, XmlIgnore]
 		public int Count
 		{
 			get { return _list.Count; }
@@ -63,7 +63,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Returns true if this Shuffle is the native sort order.
 		/// </summary>
-		[DebuggerHidden(), XmlIgnore()]
+		[DebuggerHidden, XmlIgnore]
 		public bool IsNativeShuffle
 		{
 			get { return (_name == NATIVE_SHUFFLE); }
@@ -72,7 +72,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Indicates whether this is the currently selected Shuffle
 		/// </summary>
-		[DebuggerHidden(), XmlAttribute("isSelected")]
+		[DebuggerHidden, XmlAttribute("isSelected")]
 		public bool IsSelected
 		{
 			get { return _isSelected; }
@@ -89,7 +89,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Pre-serialized version of this object.
 		/// </summary>
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore()]
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore]
 		public override string Serialized
 		{
 			get
@@ -126,7 +126,7 @@ namespace ElfCore.Core
 		/// Overloaded index operator
 		/// </summary>
 		/// <param name="index">Index of the array to use.</param>
-		[DebuggerHidden(), XmlIgnore()]
+		[DebuggerHidden, XmlIgnore]
 		public int this[int index]
 		{
 			get { return _list[index]; }
@@ -448,7 +448,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Occurs when the data in the list is changed in any way
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public EventHandler Changed;
 
 		#endregion [ Event Triggers ]

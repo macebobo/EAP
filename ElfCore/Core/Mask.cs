@@ -33,7 +33,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Returns true if this mask has been defined
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public bool HasMask
 		{
 			get { return _canvas.HasData || _lattice.HasData; }
@@ -60,7 +60,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Semi-transparent bitmap that covers the masked off part of the canvas.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Bitmap Overlay
 		{
 			get 
@@ -72,7 +72,7 @@ namespace ElfCore.Core
 			}
 		}
 
-		[XmlIgnore(),Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		[XmlIgnore,Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public byte[] ImageSerialized
 		{
 			get
@@ -116,7 +116,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Pre-serialized version of this object.
 		/// </summary>
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore()]
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore]
 		public override string Serialized
 		{
 			get
@@ -514,13 +514,13 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Occurs when the Mask is Defined
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public EventHandler Defined;
 
 		/// <summary>
 		/// Occurs when the Mask is removed
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public EventHandler Cleared;
 
 		#endregion [ Event Handlers ]

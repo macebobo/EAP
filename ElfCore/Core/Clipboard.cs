@@ -67,7 +67,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Internal property to get the Active Profile.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		protected BaseProfile Profile
 		{
 			get { return _workshop.Profile; }

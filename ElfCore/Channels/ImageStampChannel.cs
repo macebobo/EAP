@@ -57,13 +57,13 @@ namespace ElfCore.Channels
 		/// Empties the Channel of all Cells.
 		/// </summary>
 		/// <param name="destroyData">Indicates whether the Lattice array should be destroyed and rebuilt</param>
-		public override void Empty(bool destroyData)
+		public override void Empty(bool destroyData = false)
 		{
 			Origin = new Point(0, 0);
 			if (destroyData)
-				_lattice = new List<LatticePoint>();
+				LatticePoints = new List<LatticePoint>();
 			else
-				_lattice.Clear();
+				LatticePoints.Clear();
 			StampSize = Size.Empty;
 			OnLatticeChanged();
 		}
@@ -74,7 +74,7 @@ namespace ElfCore.Channels
 		/// </summary>
 		/// <param name="image">1-bit bitmap that represents the Cells in the lattice</param>
 		/// <param name="clearFirst">Clears the Lattice before populating from the bitmap.</param>
-		public override bool ImportBitmap(Bitmap image, bool clearFirst)
+		public virtual bool ImportBitmap(Bitmap image, bool clearFirst)
 		{
 			Color CheckPixel;
 
@@ -89,13 +89,13 @@ namespace ElfCore.Channels
 				{
 					CheckPixel = image.GetPixel(x, y);
 					if (CheckPixel.GetBrightness() > 0.5f)
-						_lattice.Add(new LatticePoint(x, y));
+						LatticePoints.Add(new LatticePoint(x, y));
 				}
 
 			StampSize = new Size(image.Width, image.Height);
 
-			_latticeChanged = true;
-			OnPropertyChanged(Property_Lattice, true);
+			IsLatticeChanged = true;
+			OnPropertyChanged(PropertyLattice, true);
 			return true;
 		}
 

@@ -97,7 +97,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// PictureBox control to assign our image to.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		private PictureBox Canvas
 		{
 			get 
@@ -117,7 +117,7 @@ namespace ElfCore.Core
 		/// Returns:
 		///		The background Color
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Color Color
 		{
 			get { return _color; }
@@ -154,7 +154,7 @@ namespace ElfCore.Core
 		/// Returns:
 		///		The modified image.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Bitmap CompositeImage
 		{
 			get { return _composite; }
@@ -221,7 +221,7 @@ namespace ElfCore.Core
 		/// Returns:
 		///		The Grid Color
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Color GridColor
 		{
 			get { return _gridColor; }
@@ -245,7 +245,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Indicates whether an image file has been loaded, or if loaded, was it cleared out.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public bool HasData 
 		{
 			get
@@ -294,7 +294,7 @@ namespace ElfCore.Core
 		/// Returns:
 		///		The original image.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Bitmap Image
 		{
 			get { return _image; }
@@ -391,7 +391,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Pre-serialized version of this object.
 		/// </summary>
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore()]
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore]
 		public override string Serialized
 		{
 			get
@@ -402,7 +402,7 @@ namespace ElfCore.Core
 			}
 		}
 
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore()]
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore]
 		public bool SuppressTempFiles { get; set; }
 
 		/// <summary>
@@ -413,7 +413,7 @@ namespace ElfCore.Core
 		///     A System.Drawing.Size structure that represents the width and height, in
 		///     pixels, of this image.
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public Size Size
 		{
 			get { return _size; }

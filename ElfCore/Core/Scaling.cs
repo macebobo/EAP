@@ -38,7 +38,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated size of the display Canvas.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public Size CanvasSize
 		{
 			get { return CalcCanvasSize(_latticeSize); }
@@ -47,7 +47,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated size of the display Canvas.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public SizeF CanvasSizeF
 		{
 			get { return CalcCanvasSizeF(_latticeSize); }
@@ -56,7 +56,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated width of a Cell plus the width of the space betwen the Cells.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int CellGrid
 		{
 			get { return _cellGrid; }
@@ -65,7 +65,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated width of a Cell plus the width of the space betwen the Cells.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public float CellGridF
 		{
 			get { return (float)_cellGrid; }
@@ -74,7 +74,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated width of a Cell plus the width of the space betwen the Cells, multiplied by the current Zoom amount.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int CellScale
 		{
 			get { return (int)_cellScaleF; }
@@ -83,7 +83,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated width of a Cell plus the width of the space betwen the Cells, multiplied by the current Zoom amount.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public float CellScaleF
 		{
 			get { return _cellScaleF; }
@@ -108,7 +108,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated width of a Cell, multiplied by the current Zoom amount.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int CellZoom
 		{
 			get { return (int)_cellZoomF; }
@@ -117,7 +117,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated width of a Cell, multiplied by the current Zoom amount.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public float CellZoomF
 		{
 			get { return _cellZoomF; }
@@ -126,7 +126,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated width of the space between Cells.
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public int GridLineWidth
 		{
 			get { return (_showGridLines.GetValueOrDefault(true) ? 1 : 0); }
@@ -135,7 +135,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Calculated width of the space between Cells factoring Zoom
 		/// </summary>
-		[DebuggerHidden()]
+		[DebuggerHidden]
 		public float GridLineWidthZoom
 		{
 			get { return GridLineWidth * _zoom.GetValueOrDefault(0); }

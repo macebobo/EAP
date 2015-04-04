@@ -25,7 +25,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// True if the Outline has points
 		/// </summary>
-		[XmlIgnore()]
+		[XmlIgnore]
 		public bool HasData
 		{
 			get
@@ -37,7 +37,7 @@ namespace ElfCore.Core
 			}
 		}
 
-		[XmlIgnore()]
+		[XmlIgnore]
 		public GraphicsPath Outline
 		{
 			get { return _outline; }
@@ -66,7 +66,7 @@ namespace ElfCore.Core
 		/// <summary>
 		/// Pre-serialized version of this object.
 		/// </summary>
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore()]
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never), XmlIgnore]
 		public override string Serialized
 		{
 			get

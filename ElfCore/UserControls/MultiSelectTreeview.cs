@@ -768,7 +768,7 @@ public class MultiSelectTreeview : TreeView
 		SetScrollPos((IntPtr)treeView.Handle, SB_VERT, scrollPosition.Y, true);
 	}
 
-	[DebuggerHidden()]
+	[DebuggerHidden]
 	protected override void WndProc(ref Message m)
 	{
 		if (Scroll != null)
